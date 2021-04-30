@@ -1,0 +1,51 @@
+.signup{
+    border: 1px solid black;
+    border-radius: 25px;
+    max-width:400px;
+    height:600px;
+    margin:auto;    
+}
+
+span{
+    color: red;
+}
+
+#field{
+    text-align: center;
+}
+
+#field2{
+    text-align: center;
+}
+
+#field3{
+    text-align: center;
+}
+
+input{
+    background-color: lightgreen;
+    border: 10px solid lightgreen;
+    border-radius: 20px;
+}
+
+p{
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#button{
+    text-align: center;
+}
+
+button{
+    background-color: #4FBDFC;
+    border: 1px solid #4FBDFC; 
+    color:white;
+    height: 50px;
+    border-radius: 25px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 50px;
+}
