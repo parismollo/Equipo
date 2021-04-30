@@ -20,11 +20,20 @@
     }
   }
 
+  function verify_format(&$data, &$errors){
+    $ok = true;
+    if($data["password"] != $data["password2"]){
+      $errors["password2"] = " * Passwords doesn't matches ! * ";
+      $ok = false;
+    }
+    return $ok;
+  }
+
   function verify_required(&$data, &$errors){
     $ok = true;
     foreach ($data as $key => $value) {
       if(empty($data[$key])){
-        $errors[$key] = "* This field is required!";
+        $errors[$key] = " * This field is required! * ";
         $ok = false;
       }
     }
@@ -32,11 +41,10 @@
   }
 
   function validate_data($data, $errors){
-    if(verify_required($data, $errors)){
-      process_data($data);
-      echo "Ok! Nice bitch";
+    if(verify_required($data, $errors) && verify_format($data, $errors)){
+      return true ;
     }else {
-      signup_form($errors);
+      return false;
     }
   }
 

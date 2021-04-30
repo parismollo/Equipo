@@ -5,7 +5,12 @@
     $param = $_GET["action"];
     switch ($param) {
       case 'signup':
-        validate_data($_POST, $errors);
+        if(validate_data($_POST, $errors)){
+           process_data($_POST);
+           echo "SHEEEESHHHHH";
+          }else{
+             signup_form($errors);
+          }
         break;
       default:
         signup_form($errors); // display fonctions
