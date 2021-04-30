@@ -8,6 +8,7 @@
         $errors = validate_data($_POST, $errors);
         if (empty($errors)){
           process_data($_POST);
+          echo "Success!";
         }else{
           signup_form($errors);
         }
