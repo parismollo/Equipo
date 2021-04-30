@@ -1,1 +1,1 @@
-'#Equipo 2.0 ' 
+# Equipo
