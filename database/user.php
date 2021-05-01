@@ -28,11 +28,14 @@
       if(!$res){
         $error = mysqli_error($connection);
         display_error_page($error, "signup.php");
+        // TODO: return false for login
       }else {
         echo "It works!";
+        // TODO: return true to start login
       }
     }else{
       display_error_page("Connection failed", "signup.php");
+      // TODO: Return false for login
     }
   }
 ?>
