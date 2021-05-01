@@ -14,7 +14,7 @@
     return $input;
   }
 
-  function process_data(&$data){
+  function form_validation(&$data){
     foreach ($data as $key => $value) {
       $data[$key] = process_field($value);
     }
