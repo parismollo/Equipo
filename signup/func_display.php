@@ -39,6 +39,23 @@
     <?php
   }
 
+  function display_error_page($message, $redirection_link){
+    ?>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Error</title>
+      </head>
+      <body>
+        <h1>Something went wrong...We're sorry.</h1>
+        <h3><?php echo $message?></h3>
+        <a href=<?php $redirection_link ?>>Let's try again!</a>
+      </body>
+    </html>
+    <?php
+  }
+
   function check_error($errors, $key){
     return isset($errors[$key]);
   }
