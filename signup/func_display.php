@@ -19,17 +19,17 @@
               <input type="text" name="pseudo" id="pseudo" value="" placeholder="parismollo"></br>
               <span><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></span>
           </div>
-          <div id="field2">  
+          <div id="field2">
               <label for="password">Password : </label></br>
               <input type="password" name="password" id="password" value=""></br>
               <span><?php  if (check_error($errors, "password")) echo $errors["password"];?></span>
           </div>
-          <div id="field3">    
+          <div id="field3">
               <label for="password">Password Confirmation : </label></br>
               <input type="password" name="password2" id="Password Confirmation" value=""></br>
               <span><?php  if (check_error($errors, "password2")) echo $errors["password2"];?></span>
           </div>
-          <div id="button">    
+          <div id="button">
             <button type="submit">Create account</button>
           </div>
           <div>
@@ -38,7 +38,7 @@
         </div>
       </form>
     </body>
-    </html>  
+    </html>
     <?php
   }
 
@@ -52,8 +52,9 @@
       </head>
       <body>
         <h1>Something went wrong...We're sorry.</h1>
-        <h3><?php echo $message;?></h3>
-        <a href=<?php echo $redirection_link;?>>Let's try again!</a>
+        <p><?php echo $message?></p>
+        <!-- 'echo' fixes a previous bug below -->
+        <a href=<?php echo $redirection_link ?>>Let's try again!</a>
       </body>
     </html>
     <?php
