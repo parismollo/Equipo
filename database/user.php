@@ -3,8 +3,8 @@
   require_once("connection.php"); require_once("../signup/func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "voiture93";
-  $database = "Equipo";
+  $password = "";
+  $database = "equipo";
 
   function insert_user_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
@@ -54,7 +54,7 @@
       $query = verify_user_query($user_input, $connection);
       $res = mysqli_query($connection, $query);
       mysqli_close($connection);
-      if(!$res){ 
+      if(!$res){
         $error = mysqli_error($connection);
         display_error_page($error, "signup.php?action=signin");
         return false;
@@ -65,7 +65,7 @@
           return true;
         }
       }
-      return false;      
+      return false;
     }else{
       display_error_page("Connection failed", "signup.php?action=signin");
       return false;
