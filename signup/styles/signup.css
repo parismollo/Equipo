@@ -1,13 +1,13 @@
 .signup{
     border: 1px solid black;
     border-radius: 25px;
-    max-width:400px;
-    height:600px;
+    max-width:500px;
+    height:700px;
     margin:auto;    
 }
 
 span{
-    color: red;
+    color: green;
 }
 
 #field{
@@ -24,7 +24,7 @@ span{
 
 input{
     background-color: lightgreen;
-    border: 10px solid lightgreen;
+    border: 1px solid lightgreen;
     border-radius: 20px;
 }
 
@@ -41,7 +41,7 @@ p{
 button{
     background-color: #4FBDFC;
     border: 1px solid #4FBDFC; 
-    color:white;
+    color: black;
     height: 50px;
     border-radius: 25px;
     font-style: normal;
