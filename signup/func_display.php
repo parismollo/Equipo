@@ -52,8 +52,8 @@
       </head>
       <body>
         <h1>Something went wrong...We're sorry.</h1>
-        <h3><?php echo $message?></h3>
-        <a href=<?php $redirection_link ?>>Let's try again!</a>
+        <h3><?php echo $message;?></h3>
+        <a href=<?php echo $redirection_link;?>>Let's try again!</a>
       </body>
     </html>
     <?php
@@ -95,7 +95,7 @@
             <button type="submit">Log in</button>
           </div>
           <div>
-            <a href="signup.php?action=signup">You aren't registered yet ? Sign up here</a>
+            <a href="signup.php">Aren't registered yet ? Sign up here</a>
           </div>
         </div>
       </form>
