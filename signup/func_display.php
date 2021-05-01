@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="styles/signup.css">
     </head>
     <body>
-      <form action="signup.php" method="post">
+      <form action="signup.php?action=signup" method="post">
         <div class="signup">
           <div>
             <p>Sign up</p>
