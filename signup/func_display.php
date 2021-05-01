@@ -9,10 +9,10 @@
       <link rel="stylesheet" href="styles/signup.css">
     </head>
     <body>
-      <form action="signup.php?action=signup" method="post">
+      <form action="signup.php" method="post">
         <div class="signup">
           <div>
-            <p>Inscription</p>
+            <p>Sign up</p>
           </div>
           <div id="field">
               <label for="pseudo">Pseudo : </label></br>
@@ -31,6 +31,9 @@
           </div>
           <div id="button">    
             <button type="submit">Create account</button>
+          </div>
+          <div>
+            <a href="signup.php?action=signin">Already registered ? Log in here</a>
           </div>
         </div>
       </form>
@@ -58,5 +61,46 @@
 
   function check_error($errors, $key){
     return isset($errors[$key]);
+  }
+
+  function login_form(&$errors, $wrong){
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Equipo</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="">
+    </head>
+    <body>
+      <form action="signup.php?action=login" method="post">
+        <div class="login">
+          <div>
+            <p>Log in</p>
+          </div>
+          <div id="field">
+              <label for="pseudo">Pseudo : </label></br>
+              <input type="text" name="pseudo" id="pseudo" value="" placeholder="parismollo"></br>
+              <span><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></span>
+          </div>
+          <div id="field2">  
+              <label for="password">Password : </label></br>
+              <input type="password" name="password" id="password" value=""></br>
+              <span><?php  if (check_error($errors, "password")) echo $errors["password"];?></span>
+          </div>
+          <div>
+            <span><?php echo $wrong;?></span>
+          </div>
+          <div id="button">    
+            <button type="submit">Log in</button>
+          </div>
+          <div>
+            <a href="signup.php?action=signup">You aren't registered yet ? Sign up here</a>
+          </div>
+        </div>
+      </form>
+    </body>
+    </html>  
+    <?php
   }
 ?>
