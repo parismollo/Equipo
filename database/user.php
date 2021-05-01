@@ -56,7 +56,7 @@
       mysqli_close($connection);
       if(!$res){ 
         $error = mysqli_error($connection);
-        display_error_page($error, "signup.php?action=signin");
+        display_error_page($error, "login.php");
         return false;
       }
       while($line = mysqli_fetch_assoc($res)){
@@ -67,7 +67,7 @@
       }
       return false;      
     }else{
-      display_error_page("Connection failed", "signup.php?action=signin");
+      display_error_page("Connection failed", "login.php");
       return false;
     }
 }

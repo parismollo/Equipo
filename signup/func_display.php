@@ -33,7 +33,7 @@
             <button type="submit">Create account</button>
           </div>
           <div>
-            <a href="signup.php?action=signin">Already registered ? Log in here</a>
+            <a href="login.php">Already registered ? Log in here</a>
           </div>
         </div>
       </form>
@@ -73,7 +73,7 @@
       <link rel="stylesheet" href="">
     </head>
     <body>
-      <form action="signup.php?action=login" method="post">
+      <form action="login.php?action=login" method="post">
         <div class="login">
           <div>
             <p>Log in</p>
