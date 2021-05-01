@@ -10,6 +10,10 @@ span{
     color: red;
 }
 
+a{
+    text-align: center;
+}
+
 #field{
     text-align: center;
 }
@@ -41,7 +45,7 @@ p{
 button{
     background-color: #4FBDFC;
     border: 1px solid #4FBDFC; 
-    color: black;
+    color: white;
     height: 50px;
     border-radius: 25px;
     font-style: normal;

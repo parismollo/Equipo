@@ -38,7 +38,10 @@
     verify_required($data, $errors);
     verify_format($data, $errors);
     return $errors;
-
   }
 
+  function validate_data2($data, $errors){
+    verify_required($data, $errors);
+    return $errors;
+  }
 ?>
