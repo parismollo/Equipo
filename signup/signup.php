@@ -1,20 +1,25 @@
 <?php
   require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user.php");
+  session_start();
   $errors = array();
   if(isset($_GET["action"])){
     $param = $_GET["action"];
     switch ($param) {
       case 'signup':
-        $errors = validate_data($_POST, $errors);
-        if (empty($errors)){
-          form_validation($_POST);
-          save_user($_POST);
-          // 3.redirect to login
-          // echo "Success!";
+        if(isset($_SESSION['pseudo'])){
+          header('Location: signup.php');
         }else{
-          signup_form($errors);
+          $errors = validate_data($_POST, $errors);
+          if (empty($errors)){
+            form_validation($_POST);
+            if(save_user($_POST)){
+              header('Location: login.php');
+            }  
+          }else{
+            signup_form($errors);
+          }
         }
-        break;
+        break;     
       default:
         signup_form($errors); // display fonctions
         break;

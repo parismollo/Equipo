@@ -28,14 +28,47 @@
       if(!$res){
         $error = mysqli_error($connection);
         display_error_page($error, "signup.php");
-        // TODO: return false for login
+        return false;
       }else {
-        echo "It works!";
-        // TODO: return true to start login
+        return true;
       }
     }else{
       display_error_page("Connection failed", "signup.php");
-      // TODO: Return false for login
+      return false;
     }
   }
+
+  function verify_user_query(&$user_input, $connection){
+    foreach ($user_input as $key => $value) {
+      $user_input[$key] =  mysqli_real_escape_string($connection, $user_input[$key]);
+    }
+    $login = $user_input['pseudo'];
+    $query = "SELECT pseudo,password FROM users WHERE pseudo='$login';";
+    return $query;
+  }
+
+  function login_user(&$user_input){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if(isset($connection)){
+      $query = verify_user_query($user_input, $connection);
+      $res = mysqli_query($connection, $query);
+      mysqli_close($connection);
+      if(!$res){
+        $error = mysqli_error($connection);
+        display_error_page($error, "login.php");
+        return false;
+      }
+      while($line = mysqli_fetch_assoc($res)){
+        if(password_verify($user_input['password'], $line['password'])){
+          $_SESSION['pseudo'] = $line['pseudo'];
+          return true;
+        }
+      }
+      return false;
+    }else{
+      display_error_page("Connection failed", "login.php");
+      return false;
+    }
+}
 ?>
