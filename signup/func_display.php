@@ -32,6 +32,9 @@
           <div id="button">
             <button type="submit">Create account</button>
           </div>
+          <div>
+            <a href="../login/login.php">Already registered ? Log in here</a>
+          </div>
         </div>
       </form>
     </body>

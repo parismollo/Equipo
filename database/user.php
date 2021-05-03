@@ -1,10 +1,10 @@
 <!-- User table related functions -->
 <?php
-  require_once("connection.php"); require_once("../signup/func_display.php");// Might be redudant if this is already in signup file
+  require_once("connection.php"); require_once("../login/func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "";
-  $database = "equipo";
+  $password = "voiture93";
+  $database = "Equipo";
 
   function insert_user_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
@@ -28,15 +28,15 @@
       if(!$res){
         $error = mysqli_error($connection);
         display_error_page($error, "signup.php");
-        // TODO: return false for login
+        exit;
       }else {
-        echo "It works!";
-        // TODO: return true to start login
+        header('Location: ../login/login.php');
       }
     }else{
       display_error_page("Connection failed", "signup.php");
-      // TODO: Return false for login
+      exit;
     }
+    mysqli_close($connection);
   }
 
   function login_query(&$user_input, $connection){
@@ -44,7 +44,7 @@
       $user_input[$key] = mysqli_real_escape_string($connection, $user_input[$key]);
     }
     $nickname = $user_input["pseudo"];
-    $query = "SELECT * FROM users WHERE pseudo = '$pseudo' LIMIT 1;";
+    $query = "SELECT * FROM users WHERE pseudo = '$nickname' LIMIT 1;";
     return $query;
   }
 
@@ -54,33 +54,46 @@
   }
 
 
-  // function set_user_session(){
-  //
-  // }
+  function set_user_session($user){
+    $_SESSION['user'] = $user;
+  }
 
-  // function reset_user_session(){
-  //
-  // }
+  function reset_user_session(){
+    if(isset($_SESSION['user'])){
+      $_SESSION = array();
+      session_destroy();
+      display_bye_page();
+    }else{
+      header('Location: login.php');
+    }
+  }
 
   function login_user($user_input){
-    $connection = connect_to_db();
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
     if (isset($connection)){
-      // TODO: $query = login_query($user_input, $connection);
-      // TODO: $result = get_user($connection, $query);
+      $query = login_query($user_input, $connection);
+      $result = get_user($connection, $query);
       if (!$result){
-        // TODO: display_error_page();
+        $error = mysqli_error($connection);
+        display_error_page($error, "login.php");
+        exit;
       }else {
         while ($row = mysqli_fetch_assoc($result)){
           if(password_verify($user_input["password"], $row["password"])){
-            // TODO: display_success_page();
-            // TODO: set_user_session($user_input["pseudo"]);
+            set_user_session($user_input["pseudo"]);
+            display_success_page();
           }else {
-            // TODO: create error array and set manually as wrong password or something
-            // TODO: display_login_form($errors)
+            $wrong = " * Username or password are incorrects ! * ";
+            login_form($errors, $wrong);
             break;
           }
         }
       }
+    }else{
+      display_error_page("Connection failed", "login.php");
+      exit;
     }
+    mysqli_close($connection);
   }
 ?>

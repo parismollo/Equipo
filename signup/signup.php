@@ -1,4 +1,7 @@
 <?php
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
   require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user.php");
   $errors = array();
   if(isset($_GET["action"])){
@@ -12,7 +15,6 @@
           if ($is_valid){
             form_validation($_POST);
             save_user($_POST);
-            // TODO: display_login_form()
           }else{
             signup_form($errors);
           }

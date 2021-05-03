@@ -1,6 +1,9 @@
 <?php
-  // FIXME: session_start();
-  // FIXME: require_once("display_functions.php"); require_once("handle_input_data.php");
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
+  session_start();
+  require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user.php");
   $errors = array();
   if (isset($_GET["action"])){
     switch ($_GET["action"]) {
@@ -8,27 +11,27 @@
         if (empty($_POST)){
           header('Location: login.php');
         }else {
-          $errors = get_errors($_POST, $errors);
-          $is_valid = is_valid($_POST);
+          $errors = get_errors_login($_POST, $errors);
+          $is_valid = is_valid_login($_POST);
           if ($is_valid){
-            // TODO: login_user($_POST);
+            login_user($_POST);
           }else {
-            // TODO: display_login_form($errors);
+            login_form($errors, "");
           }
         }
         break;
       case 'reset':
-      // TODO: Write function reset_user_session();
-      // TODO: redirect;
+        reset_user_session();
         break;
       default:
-        // TODO: display_login_form($errors)
+        login_form($errors, "");
         break;
     }
   }else{
-    // TODO: if session  -> redirect to profile + reset button
-    }else {
-      // TODO display_login_form($errors);
+    if(isset($_SESSION['user'])){
+      display_success_page();
+    }else{
+      login_form($errors, "");
     }
   }
 ?>
