@@ -12,7 +12,7 @@
           if ($is_valid){
             form_validation($_POST);
             save_user($_POST);
-            // TODO: display_login_form
+            // TODO: display_login_form()
           }else{
             signup_form($errors);
           }
