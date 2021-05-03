@@ -39,7 +39,25 @@
     }
   }
 
-  function login_user($_POST){
-    // TODO 
+  function login_user($user_input){
+    $connection = connect_to_db();
+    if (isset($connection)){
+      // TODO: $query = login_query($user_input, $connection);
+      // TODO: $result = get_user($connection, $query);
+      if (!$result){
+        // TODO: display_error_page();
+      }else {
+        while ($row = mysqli_fetch_assoc($result)){
+          if(password_verify($user_input["password"], $row["password"])){
+            // TODO: display_success_page();
+            // TODO: set_user_session($user_input["pseudo"]);
+          }else {
+            // TODO: create error array and set manually as wrong password or something
+            // TODO: display_login_form($errors)
+            break;
+          }
+        }
+      }
+    }
   }
 ?>
