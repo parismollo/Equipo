@@ -7,6 +7,15 @@
 - required
 */
 
+  function check_post_keys($post_input){
+    foreach ($post_input as $key => $value) {
+      if (!isset($post_input[$key])){
+        return false;
+      }
+    }
+    return true;
+  }
+
   function process_field($input){
     if (!empty($input)){
       $input = htmlspecialchars(trim($input));
@@ -20,13 +29,20 @@
     }
   }
 
-  function verify_format(&$data, &$errors){
+  function get_password_error(&$data, &$errors){
     if($data["password"] != $data["password2"]){
       $errors["password2"] = " * Passwords doesn't matches ! * ";
     }
   }
 
-  function verify_required(&$data, &$errors){
+  function is_password_valid(&$data){
+    if($data["password"] != $data["password2"]){
+      return false;
+    }
+    return true;
+  }
+
+  function get_required_errors(&$data, &$errors){
     foreach ($data as $key => $value) {
       if(empty($data[$key])){
         $errors[$key] = " * This field is required! * ";
@@ -34,10 +50,26 @@
     }
   }
 
-  function validate_data($data, $errors){
-    verify_required($data, $errors);
-    verify_format($data, $errors);
+  function is_required_valid(&$data){
+    foreach ($data as $key => $value) {
+      if(empty($data[$key])){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function get_errors($data, $errors){
+    get_password_error($data, $errors);
+    get_required_errors($data, $errors);
     return $errors;
+
+  }
+
+  function is_valid($data){
+    $check_1 = is_required_valid($data);
+    $check_2 = is_password_valid($data);
+    return ($check_1 && $check_2);
 
   }
 

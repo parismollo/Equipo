@@ -5,18 +5,22 @@
     $param = $_GET["action"];
     switch ($param) {
       case 'signup':
-        $errors = validate_data($_POST, $errors);
-        if (empty($errors)){
-          form_validation($_POST);
-          save_user($_POST);
-          // 3.redirect to login
-          // echo "Success!";
+        if (empty($_POST)){
+          header('Location: signup.php');
         }else{
-          signup_form($errors);
+          $errors = get_errors($_POST, $errors);
+          $is_valid = is_valid($_POST);
+          if ($is_valid){
+            form_validation($_POST);
+            save_user($_POST);
+          }else{
+            signup_form($errors);
+          }
         }
         break;
+
       default:
-        signup_form($errors); // display fonctions
+        signup_form($errors);
         break;
     }
   }else {
