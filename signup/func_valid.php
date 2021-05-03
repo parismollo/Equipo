@@ -1,21 +1,4 @@
 <?php
-/*
-1. Traitement formulaire
-- espace inutiles
-- caracteres speciaux
-- valide format mot de passe
-- required
-*/
-
-  function check_post_keys($post_input){
-    foreach ($post_input as $key => $value) {
-      if (!isset($post_input[$key])){
-        return false;
-      }
-    }
-    return true;
-  }
-
   function process_field($input){
     if (!empty($input)){
       $input = htmlspecialchars(trim($input));

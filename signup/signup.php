@@ -18,7 +18,6 @@
           }
         }
         break;
-
       default:
         signup_form($errors);
         break;
