@@ -38,4 +38,8 @@
       // TODO: Return false for login
     }
   }
+
+  function login_user($_POST){
+    // TODO 
+  }
 ?>

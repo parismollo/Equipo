@@ -1,18 +1,34 @@
 <?php
-  // TODO: #1 Start user session
-  // TODO: #2 Import library
-
-  // TODO: #3 IF GET PARAM
-    /*
-      a. login case --> validade login form  --> start user session
-                                                --> handle error
-      b. reset case --> destroy session --> redirect user
-      c. default -- >display login form
-    */
-    
-  // TODO #3 ELSE GET PARAM
-    /*
-      a. Check if there is a session --> display success message
-      b. If there is no session --> display login form
-    */
+  // FIXME: session_start();
+  // FIXME: require_once("display_functions.php"); require_once("handle_input_data.php");
+  $errors = array();
+  if (isset($_GET["action"])){
+    switch ($_GET["action"]) {
+      case 'login':
+        if (empty($_POST)){
+          header('Location: login.php');
+        }else {
+          $errors = get_errors($_POST, $errors);
+          $is_valid = is_valid($_POST);
+          if ($is_valid){
+            // TODO: login_user($_POST);
+          }else {
+            // TODO: display_login_form($errors);
+          }
+        }
+        break;
+      case 'reset':
+      // TODO: Write function reset_user_session();
+      // TODO: redirect;
+        break;
+      default:
+        // TODO: display_login_form($errors)
+        break;
+    }
+  }else{
+    // TODO: if session  -> redirect to profile + reset button
+    }else {
+      // TODO display_login_form($errors);
+    }
+  }
 ?>
