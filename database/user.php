@@ -39,6 +39,29 @@
     }
   }
 
+  function login_query(&$user_input, $connection){
+    foreach ($user_input as $key => $value) {
+      $user_input[$key] = mysqli_real_escape_string($connection, $user_input[$key]);
+    }
+    $nickname = $user_input["pseudo"];
+    $query = "SELECT * FROM users WHERE pseudo = '$pseudo' LIMIT 1;";
+    return $query;
+  }
+
+  function get_user($connection, $query){
+    $res = mysqli_query($connection, $query);
+    return $res;
+  }
+
+
+  // function set_user_session(){
+  //
+  // }
+
+  // function reset_user_session(){
+  //
+  // }
+
   function login_user($user_input){
     $connection = connect_to_db();
     if (isset($connection)){
