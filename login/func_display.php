@@ -1,6 +1,34 @@
 <?php
     require_once("../signup/func_display.php");
+    function login_form(&$errors, $wrong){
+      ?>
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Login</title>
+          <link rel="stylesheet" href="../design/styles/login.css">
+        </head>
+        <body>
+          <div class="login-page">
+            <div class="form">
+              <form class="login-form" action="login.php?action=login" method="post">
+                <input type="text" name="pseudo" placeholder="pseudo"/>
+                <p class="message"><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p>
+                <input type="password" name="password" placeholder="password"/>
+                <p class="message"><?php  if (check_error($errors, "password")) echo $errors["password"];?></p>
+                <p class="message"><?php echo $wrong;?></p>
+                <button type="submit">login</button>
+                <p class="message">Not registered? <a href="../signup/signup.php">Create an account</a></p>
+              </form>
+            </div>
+          </div>
+        </body>
+      </html>
 
+      <?php
+    }
+    /*
     function login_form(&$errors, $wrong){
         ?>
         <!DOCTYPE html>
@@ -21,7 +49,7 @@
                   <input type="text" name="pseudo" id="pseudo" value="" placeholder="parismollo"></br>
                   <span><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></span>
               </div>
-              <div id="field2">  
+              <div id="field2">
                   <label for="password">Password : </label></br>
                   <input type="password" name="password" id="password" value=""></br>
                   <span><?php  if (check_error($errors, "password")) echo $errors["password"];?></span>
@@ -29,7 +57,7 @@
               <div>
                   <span><?php echo $wrong;?></span>
               </div>
-              <div id="button">    
+              <div id="button">
                 <button type="submit">Log in</button>
               </div>
               <div>
@@ -38,9 +66,9 @@
             </div>
           </form>
         </body>
-        </html>  
+        </html>
         <?php
-      }
+      }*/
 
       function display_success_page(){
         ?>
@@ -58,7 +86,7 @@
               </div>
             </div>
         </body>
-        </html>  
+        </html>
         <?php
       }
 
@@ -78,7 +106,7 @@
               </div>
             </div>
         </body>
-        </html>  
+        </html>
         <?php
       }
 ?>

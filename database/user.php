@@ -74,7 +74,8 @@
     if (isset($connection)){
       $query = login_query($user_input, $connection);
       $result = get_user($connection, $query);
-      if (!$result){
+      $cnt = mysqli_num_rows($result);
+      if (!$result || $cnt==0){
         $error = mysqli_error($connection);
         display_error_page($error, "login.php");
         exit;
