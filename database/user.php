@@ -3,8 +3,8 @@
   require_once("connection.php"); require_once("../login/func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "voiture93";
-  $database = "Equipo";
+  $password = "";
+  $database = "equipo";
 
   function insert_user_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
@@ -74,7 +74,8 @@
     if (isset($connection)){
       $query = login_query($user_input, $connection);
       $result = get_user($connection, $query);
-      if (!$result){
+      $cnt = mysqli_num_rows($result);
+      if (!$result || $cnt==0){
         $error = mysqli_error($connection);
         display_error_page($error, "login.php");
         exit;
@@ -84,7 +85,7 @@
             set_user_session($user_input["pseudo"]);
             display_success_page();
           }else {
-            $wrong = " * Username or password are incorrects ! * ";
+            $wrong = " Incorrect password !* ";
             login_form($errors, $wrong);
             break;
           }
