@@ -46,6 +46,14 @@
   background: rgb(134,242,114);
   background: linear-gradient(90deg,  rgba(59,240,18,1) 11%, rgba(134,242,114,1) 100%);
 } */
+.error {
+  margin: 15px 0 0;
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+
+}
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;

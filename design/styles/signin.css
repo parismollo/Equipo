@@ -51,6 +51,16 @@
   color: #b3b3b3;
   font-size: 12px;
 }
+
+.error {
+  margin: 15px 0 0;
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+
+}
+
 .form .message a {
   color: #4CAF50;
   text-decoration: none;
