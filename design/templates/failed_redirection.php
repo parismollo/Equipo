@@ -10,7 +10,7 @@
       <div class="error_main">
         <h1>Something went wrong...We're sorry.</h1>
         <p class="error"><?php if(isset($message)) echo $message?></p>
-        <p class="message"></p> <a href=<?php if (isset($redirection_link)) echo $redirection_link ?>>Let's try again!</a>
+        <p class="message"><a href=<?php if (isset($redirection_link)) echo $redirection_link ?>>Let's try again!</a></p>
       </div>
       </div>
     </div>

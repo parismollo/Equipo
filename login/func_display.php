@@ -94,18 +94,20 @@
         ?>
         <!DOCTYPE html>
         <html>
-        <head>
-          <title>Equipo</title>
-          <meta charset="utf-8">
-          <link rel="stylesheet" href="">
-        </head>
-        <body>
-              <h1><?php echo "Disconnected successfully !";?></h1>
-              <div>
-                <a href="login.php">Return to log in</a>
+          <head>
+            <meta charset="utf-8">
+            <title>Logout</title>
+            <link rel="stylesheet" href="../design/styles/failed_redirection.css">
+          </head>
+          <body>
+            <div class="error-page">
+              <div class="error_main">
+                <h1>Disconnected successfully</h1>
+                <p class="message"><a href="login.php">Return to log in</a></p>
+              </div>
               </div>
             </div>
-        </body>
+          </body>
         </html>
         <?php
       }

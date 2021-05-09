@@ -82,6 +82,9 @@
       $cnt = mysqli_num_rows($result);
       if (!$result || $cnt==0){
         $error = mysqli_error($connection);
+        if ($cnt==0){
+          $error = "No users were found with this pseudo!";
+        }
         display_error_page($error, "login.php");
         exit;
       }else {
@@ -90,7 +93,7 @@
             set_user_session($user_input["pseudo"]);
             display_success_page();
           }else {
-            $wrong = " * Username or password are incorrects ! * ";
+            $wrong = "Wrong password!";
             login_form($errors, $wrong);
             break;
           }
