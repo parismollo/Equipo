@@ -83,7 +83,8 @@
       if (!$result || $cnt==0){
         $error = mysqli_error($connection);
         if ($cnt==0){
-          $error = "No users were found with this pseudo!";
+          login_form($errors, "No users were found with this pseudo!"); // here
+          exit;
         }
         display_error_page($error, "login.php");
         exit;
