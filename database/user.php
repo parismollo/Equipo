@@ -17,7 +17,6 @@
 
   }
 
-
   function save_user($user_input){
     global $server, $user, $password, $database;
     // 1. connection 2.generate insert query 3. insert user and handle return.
@@ -25,8 +24,14 @@
     if(isset($connection)){
       $query = insert_user_query($user_input, $connection);
       $res = mysqli_query($connection, $query);
+      $check_pseudo_res = mysqli_query($connection, login_query($user_input, $connection));
+      $available_pseudo = (mysqli_num_rows($check_pseudo_res) == 0);
+
       if(!$res){
         $error = mysqli_error($connection);
+        if(!$available_pseudo){
+          $error = "This pseudo has been taken. Try something else!";
+        }
         display_error_page($error, "signup.php");
         exit;
       }else {
