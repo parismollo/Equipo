@@ -30,7 +30,8 @@
       if(!$res){
         $error = mysqli_error($connection);
         if(!$available_pseudo){
-          $error = "This pseudo has been taken. Try something else!";
+          signup_form($errors, "This pseudo has been taken. Try something else!");
+          exit;
         }
         display_error_page($error, "signup.php");
         exit;

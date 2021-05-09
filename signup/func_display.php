@@ -1,5 +1,5 @@
 <?php
-  function signup_form(&$errors){
+  function signup_form(&$errors, $wrong){
     ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -18,6 +18,7 @@
               <p class="error"><?php  if (check_error($errors, "password")) echo $errors["password"];?></p>
               <input type="password" name="password2" placeholder="confirm password"/>
               <p class="error"><?php  if (check_error($errors, "password2")) echo $errors["password2"];?></p>
+              <p class="error"><?php if (isset($wrong)) echo $wrong;?></p>
               <button type="submit">create</button>
               <p class="message">Already registered? <a href="../login/login.php">Login</a></p>
             </form>
