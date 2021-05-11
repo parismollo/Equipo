@@ -12,7 +12,10 @@
     }
     $hash_pass = password_hash($user_input["password"], PASSWORD_DEFAULT);
     $pseudo = $user_input["pseudo"];
-    $query = "INSERT INTO users VALUES ('$pseudo', '$hash_pass');";
+    $email = $user_input["email"];
+    $gender = $user_input["gender"];
+    $date = $user_input["date"];
+    $query = "INSERT INTO users VALUES ('$pseudo', '$email', '$gender', '$date', '$hash_pass');";
     return $query;
 
   }
@@ -26,11 +29,16 @@
       $res = mysqli_query($connection, $query);
       $check_pseudo_res = mysqli_query($connection, login_query($user_input, $connection));
       $available_pseudo = (mysqli_num_rows($check_pseudo_res) == 0);
+      $check_email_res = mysqli_query($connection, email_available($user_input, $connection));
+      $available_email = (mysqli_num_rows($check_email_res) == 0);
 
       if(!$res){
         $error = mysqli_error($connection);
         if(!$available_pseudo){
           $error = "This pseudo has been taken. Try something else!";
+        }
+        if(!$available_email){
+          $error = "This email has been taken. Try something else!";
         }
         display_error_page($error, "signup.php");
         exit;
@@ -42,6 +50,15 @@
       exit;
     }
     mysqli_close($connection);
+  }
+
+  function email_available(&$user_input, $connection){
+    foreach ($user_input as $key => $value) {
+      $user_input[$key] = mysqli_real_escape_string($connection, $user_input[$key]);
+    }
+    $email = $user_input["email"];
+    $query = "SELECT * FROM users WHERE email = '$email' LIMIT 1;";
+    return $query;
   }
 
   function login_query(&$user_input, $connection){

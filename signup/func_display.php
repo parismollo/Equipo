@@ -14,6 +14,16 @@
             <form class="login-form" action="signup.php?action=signup" method="post">
               <input type="text" name="pseudo" placeholder="pseudo"/>
               <p class="error"><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p>
+              <input type="email" name="email" placeholder="email adress"/>
+              <p class="error"><?php  if (check_error($errors, "email")) echo $errors["email"];?></p>
+              <p>Gender : </p>
+              <input type="radio" id="man" name="gender" value="man" checked>
+              <label for="man">Man</label></br>
+              <input type="radio" id="woman" name="gender" value="woman">
+              <label for="woman">Woman</label>
+              <p>Day of Birth : </p>
+              <input type="date" name="date" />
+              <p class="error"><?php  if (check_error($errors, "date")) echo $errors["date"];?></p>
               <input type="password" name="password" placeholder="password"/>
               <p class="error"><?php  if (check_error($errors, "password")) echo $errors["password"];?></p>
               <input type="password" name="password2" placeholder="confirm password"/>
