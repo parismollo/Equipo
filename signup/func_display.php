@@ -17,10 +17,10 @@
               <input type="email" name="email" placeholder="email adress"/>
               <p class="error"><?php  if (check_error($errors, "email")) echo $errors["email"];?></p>
               <p>Gender : </p>
-              <input type="radio" id="man" name="gender" value="man" checked>
-              <label for="man">Man</label></br>
-              <input type="radio" id="woman" name="gender" value="woman">
-              <label for="woman">Woman</label>
+              <input type="radio" id="man" name="gender" value="M" checked>
+              <label for="man">Male</label>
+              <input type="radio" id="woman" name="gender" value="F">
+              <label for="woman">Female</label>
               <p>Day of Birth : </p>
               <input type="date" name="date" />
               <p class="error"><?php  if (check_error($errors, "date")) echo $errors["date"];?></p>
