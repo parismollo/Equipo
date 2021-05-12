@@ -16,16 +16,16 @@
             form_validation($_POST);
             save_user($_POST);
           }else{
-            signup_form($errors);
+            signup_form($errors, "");
           }
         }
         break;
       default:
-        signup_form($errors);
+        signup_form($errors, "");
         break;
     }
   }else {
-    signup_form($errors);
+    signup_form($errors, "");
   }
 
 

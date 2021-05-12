@@ -17,7 +17,7 @@
                 <p class="error"><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p>
                 <input type="password" name="password" placeholder="password"/>
                 <p class="error"><?php  if (check_error($errors, "password")) echo $errors["password"];?></p>
-                <p class="error"><?php echo $wrong;?></p>
+                <p class="error"><?php if (isset($wrong)) echo $wrong;?></p>
                 <button type="submit">login</button>
                 <p class="message">Not registered? <a href="../signup/signup.php">Create an account</a></p>
               </form>
