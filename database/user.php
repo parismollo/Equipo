@@ -60,6 +60,8 @@
           signup_form($errors, "This email has been taken. Try something else!");
           exit;
         }
+        display_error_page($error, "signup.php");
+        exit;
       }else {
         header('Location: ../login/login.php');
       }
