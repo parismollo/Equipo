@@ -7,5 +7,7 @@
 
     if(isset($_SESSION["user"])){
         display_profile(user_info());
+    }else{
+        header('Location: /Projects/Equipo/login/login.php');
     }
 ?>
