@@ -2,6 +2,9 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS tags;
 DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS projectLabels;
+DROP TABLE IF EXISTS userLabels;
+DROP TABLE IF EXISTS userProject;
 
 CREATE TABLE users (
   pseudo VARCHAR(256) NOT NULL,
@@ -23,11 +26,28 @@ CREATE TABLE projects (
   PRIMARY KEY (title)
 );
 
+
+-- Many 2 Many tables
+/*
+1. projectLabels: describe relation between project and its labels.
+2. userLabels: a user can follow "labels", in other words, topics.
+3. userProject: a user can build many projects and the project can have many collaborators
+*/
+
 CREATE TABLE projectLabels(
   project VARCHAR(50) NOT NULL,
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (project, label),
   FOREIGN KEY (project) REFERENCES projects(title),
+  FOREIGN KEY (label) REFERENCES tags(label)
+);
+
+
+CREATE TABLE userLabels(
+  user VARCHAR(256) NOT NULL,
+  label VARCHAR(50) NOT NULL,
+  PRIMARY KEY (user, label),
+  FOREIGN KEY (user) REFERENCES users(pseudo),
   FOREIGN KEY (label) REFERENCES tags(label)
 );
 
