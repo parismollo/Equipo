@@ -63,7 +63,8 @@
         display_error_page($error, "signup.php");
         exit;
       }else {
-        header('Location: login.php');
+        echo "here";
+        // header('Location: login.php');
       }
     }else{
       display_error_page("Connection failed", "signup.php");
