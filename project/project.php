@@ -2,8 +2,9 @@
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
-  require_once("../database/project/project.php");
+  require_once("../database/project.php");
   require_once("func_display.php");
+  session_start();
   $errors = array();
 
   if(isset($_GET["action"])){
