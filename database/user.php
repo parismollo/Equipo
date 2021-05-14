@@ -1,6 +1,6 @@
 <!-- User table related functions -->
 <?php
-  require_once("connection.php"); require_once("../login/func_display.php");// Might be redudant if this is already in signup file
+  require_once('connection.php'); require_once("func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
   $password = "";
@@ -63,7 +63,7 @@
         display_error_page($error, "signup.php");
         exit;
       }else {
-        header('Location: ../login/login.php');
+        header('Location: login.php');
       }
     }else{
       display_error_page("Connection failed", "signup.php");

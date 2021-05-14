@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once("../database/connection.php"); require_once("../database/user.php");
 
     function query_info(){
@@ -21,7 +21,7 @@
                     }
                 }
             }
-            return $user_info;            
+            return $user_info;
         }
     }
 ?>
