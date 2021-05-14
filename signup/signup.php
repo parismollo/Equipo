@@ -27,6 +27,4 @@
   }else {
     signup_form($errors, "");
   }
-
-
 ?>

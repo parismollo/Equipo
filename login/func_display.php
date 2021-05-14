@@ -2,6 +2,17 @@
     require_once("../signup/func_display.php");
     function login_form(&$errors, $wrong){
       ?>
+      <style>
+        h2 {
+          font-weight: bold;
+          font-size: 35px;
+          margin-top: 0px;
+          padding-top: 0px;
+          background: linear-gradient(90deg, rgba(134,242,114,1) 11%, rgba(59,240,18,1) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      </style>
       <!DOCTYPE html>
       <html>
         <head>
@@ -12,6 +23,7 @@
         <body>
           <div class="login-page">
             <div class="form">
+              <h2>Equipo</h2>
               <form class="login-form" action="login.php?action=login" method="post">
                 <input type="text" name="pseudo" placeholder="pseudo"/>
                 <p class="error"><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p>
@@ -28,47 +40,6 @@
 
       <?php
     }
-    /*
-    function login_form(&$errors, $wrong){
-        ?>
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Equipo</title>
-          <meta charset="utf-8">
-          <link rel="stylesheet" href="">
-        </head>
-        <body>
-          <form action="login.php?action=login" method="post">
-            <div class="login">
-              <div>
-                <p>Log in</p>
-              </div>
-              <div id="field">
-                  <label for="pseudo">Pseudo : </label></br>
-                  <input type="text" name="pseudo" id="pseudo" value="" placeholder="parismollo"></br>
-                  <span><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></span>
-              </div>
-              <div id="field2">
-                  <label for="password">Password : </label></br>
-                  <input type="password" name="password" id="password" value=""></br>
-                  <span><?php  if (check_error($errors, "password")) echo $errors["password"];?></span>
-              </div>
-              <div>
-                  <span><?php echo $wrong;?></span>
-              </div>
-              <div id="button">
-                <button type="submit">Log in</button>
-              </div>
-              <div>
-                <a href="../signup/signup.php">Aren't registered yet ? Sign up here</a>
-              </div>
-            </div>
-          </form>
-        </body>
-        </html>
-        <?php
-      }*/
 
       function display_success_page(){
         ?>

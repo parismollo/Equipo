@@ -5,6 +5,7 @@
   padding: 8% 0 0;
   margin: auto;
 }
+
 .form {
   position: relative;
   z-index: 1;
@@ -16,7 +17,8 @@
   border-radius: 10px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+
+.form input{
   font-family: "Poppins", sans-serif;
   border-radius: 10px;
   outline: 0;
@@ -28,6 +30,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
 .form button {
   font-family: "Poppins", sans-serif;
   border-radius: 10px;
@@ -42,10 +45,7 @@
   background: rgb(77,7,157);
   background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
 }
-/* .form button:hover,.form button:active,.form button:focus {
-  background: rgb(134,242,114);
-  background: linear-gradient(90deg,  rgba(59,240,18,1) 11%, rgba(134,242,114,1) 100%);
-} */
+
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
@@ -68,39 +68,7 @@
 .form .register-form {
   display: none;
 }
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
+
 body {
   font-family: "Poppins", sans-serif;
   background: rgb(134,242,114);

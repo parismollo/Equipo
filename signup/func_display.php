@@ -1,28 +1,54 @@
 <?php
   function signup_form(&$errors, $wrong){
     ?>
+    <style>
+    .form select{
+      font-family: "Poppins", sans-serif;
+      border-radius: 10px;
+      outline: 0;
+      background: #f2f2f2;
+      width: 100%;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    h2 {
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 0px;
+    padding-top: 0px;
+    background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+    </style>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
       <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="../design/styles/signin.css">
+        <link rel="stylesheet" href="../design/styles/signup.css">
       </head>
       <body>
         <div class="login-page">
           <div class="form">
+            <h2>Equipo</h2>
             <form class="login-form" action="signup.php?action=signup" method="post">
               <input type="text" name="pseudo" placeholder="pseudo"/>
               <p class="error"><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p>
               <input type="email" name="email" placeholder="email adress"/>
               <p class="error"><?php  if (check_error($errors, "email")) echo $errors["email"];?></p>
-              <p>Gender : </p>
-              <input type="radio" id="man" name="gender" value="M" checked>
-              <label for="man">Male</label>
-              <input type="radio" id="woman" name="gender" value="F">
-              <label for="woman">Female</label>
-              <p>Day of Birth : </p>
-              <input type="date" name="date" />
+              <!-- <p>Gender</p> -->
+              <select name="gender" size="1">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="O">Other</option>
+              </select>
+              <!-- <p>Birthdate</p> -->
+              <input type="date" name="date"/>
               <p class="error"><?php  if (check_error($errors, "date")) echo $errors["date"];?></p>
               <input type="password" name="password" placeholder="password"/>
               <p class="error"><?php  if (check_error($errors, "password")) echo $errors["password"];?></p>
@@ -38,49 +64,6 @@
     </html>
     <?php
   }
-/*
-  function signup_form(&$errors){
-    ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Equipo</title>
-      <meta charset="utf-8">
-      <link rel="stylesheet" href="styles/signup.css">
-    </head>
-    <body>
-      <form action="signup.php?action=signup" method="post">
-        <div class="signup">
-          <div>
-            <p>Inscription</p>
-          </div>
-          <div id="field">
-              <label for="pseudo">Pseudo : </label></br>
-              <input type="text" name="pseudo" id="pseudo" value="" placeholder="parismollo"></br>
-              <span><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></span>
-          </div>
-          <div id="field2">
-              <label for="password">Password : </label></br>
-              <input type="password" name="password" id="password" value=""></br>
-              <span><?php  if (check_error($errors, "password")) echo $errors["password"];?></span>
-          </div>
-          <div id="field3">
-              <label for="password">Password Confirmation : </label></br>
-              <input type="password" name="password2" id="Password Confirmation" value=""></br>
-              <span><?php  if (check_error($errors, "password2")) echo $errors["password2"];?></span>
-          </div>
-          <div id="button">
-            <button type="submit">Create account</button>
-          </div>
-          <div>
-            <a href="../login/login.php">Already registered ? Log in here</a>
-          </div>
-        </div>
-      </form>
-    </body>
-    </html>
-    <?php
-  }*/
 
 
 function display_error_page($message, $redirection_link){
@@ -105,25 +88,6 @@ function display_error_page($message, $redirection_link){
   <?php
 
 }
-
-/*
-  function display_error_page($message, $redirection_link){
-    ?>
-    <!DOCTYPE html>
-    <html lang="en" dir="ltr">
-      <head>
-        <meta charset="utf-8">
-        <title>Error</title>
-      </head>
-      <body>
-        <h1>Something went wrong...We're sorry.</h1>
-        <p><?php echo $message?></p>
-        <!-- 'echo' fixes a previous bug below -->
-        <a href=<?php echo $redirection_link ?>>Let's try again!</a>
-      </body>
-    </html>
-    <?php
-  }*/
 
   function check_error($errors, $key){
     return isset($errors[$key]);

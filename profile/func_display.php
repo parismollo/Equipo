@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-sm-6">
                     <p class="m-b-10 f-w-600">Gender :</p>
-                    <h6 class="text-muted f-w-400"><?php if($user_info["gender"] == "M")echo "Male" ; else echo "Female";?></h6>
+                    <h6 class="text-muted f-w-400"><?php echo $user_info["gender"];?></h6>
                 </div>
             </div>
         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
