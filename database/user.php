@@ -3,8 +3,8 @@
   require_once('connection.php'); require_once("func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "";
-  $database = "equipo";
+  $password = "voiture93";
+  $database = "Equipo";
 
   function insert_user_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
@@ -111,7 +111,7 @@
         while ($row = mysqli_fetch_assoc($result)){
           if(password_verify($user_input["password"], $row["password"])){
             set_user_session($user_input["pseudo"]);
-            display_success_page();
+            header('Location: ../profile/profile.php');
           }else {
             $wrong = "Wrong password!";
             login_form($errors, $wrong);

@@ -83,7 +83,6 @@
               <h1><?php echo "Welcome ".$_SESSION['user'];?></h1>
               <div>
               <a href="../profile/profile.php">Profile page</a>
-                <a href="login.php?action=reset">Reset session</a>
               </div>
             </div>
         </body>
