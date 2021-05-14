@@ -20,6 +20,9 @@
                                         <div class="m-b-25"></div>
                                         <h6 class="f-w-600"><?php echo $_SESSION["user"];?></h6>
                                     </div>
+                                    <div class="card-block text-center text-white">
+                                        <a href="../login/login.php?action=reset">Reset session</a>
+                                    </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="card-block">
@@ -56,5 +59,10 @@
     </body>
 </html>
 <?php
+    }
+
+    function update_profile(){
+?>
+<?php 
     }
 ?>

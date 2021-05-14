@@ -29,7 +29,7 @@
     }
   }else{
     if(isset($_SESSION['user'])){
-      display_success_page();
+      header('Location: ../profile/profile.php');
     }else{
       login_form($errors, "");
     }
