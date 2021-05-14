@@ -1,5 +1,5 @@
 <?php
-    require_once("../database/connection.php"); require_once("../database/user/user.php");
+    require_once("../database/connection.php"); require_once("../database/user.php");
 
     function query_info(){
         $query = "SELECT * FROM users WHERE pseudo = '$_SESSION[user]';";

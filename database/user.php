@@ -1,6 +1,6 @@
 <!-- User table related functions -->
 <?php
-  require_once('../connection.php'); require_once("func_display.php");// Might be redudant if this is already in signup file
+  require_once('connection.php'); require_once("func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
   $password = "";

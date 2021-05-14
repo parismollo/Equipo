@@ -3,7 +3,7 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
   session_start();
-  require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user/user.php");
+  require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user.php");
   $errors = array();
   if (isset($_GET["action"])){
     switch ($_GET["action"]) {
