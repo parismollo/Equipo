@@ -9,7 +9,7 @@
     // TODO: check if user is logged
     foreach ($user_input as $key => $value) {
       $user_input[$key] =  mysqli_real_escape_string($connection, $user_input[$key]);
-    } // get data form
+    }
     $title = $user_input["title"];
     $description = $user_input["description"];
     $query = "INSERT INTO projects VALUES ('$title', '$description');";
@@ -21,6 +21,15 @@
     $query = "INSERT INTO userProject VALUES ('$user_pseudo', '$project_name');";
     return $query;
   }
+
+  // function create_project_to_tag_query(){
+  //
+  // }
+
+
+  // function save_project_to_query(){
+  //
+  // }
 
   function save_user_to_project($user_pseudo, $project_name){
     global $server, $user, $password, $database;
@@ -49,8 +58,6 @@
     if (isset($connection)){
       $query = create_project_query($user_input, $connection);
       $res = mysqli_query($connection, $query);
-      // TODO: add tags
-      // TODO: add user relationship
       if (!$res){
         $error = mysqli_error($connection);
         // TODO: add title verification like in signup (pseudo)
@@ -58,6 +65,7 @@
         exit;
       }else{
         save_user_to_project($_SESSION["user"], $user_input["title"]);
+        // TODO: for each tag in the $user_input["tag"] save tag
         echo "debug3";
         exit;
         // header('Location: ../profile/profile.php');
