@@ -3,8 +3,8 @@
   require_once("connection.php"); require_once("../login/func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "voiture93";
-  $database = "Equipo";
+  $password = "";
+  $database = "equipo";
 
   function insert_user_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {

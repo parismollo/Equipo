@@ -17,7 +17,7 @@ CREATE TABLE tags (
   PRIMARY KEY (label)
 );
 
-CREATE TABLE trojects (
+CREATE TABLE projects (
   title VARCHAR(50) NOT NULL,
   description VARCHAR(256) NOT NULL,
   PRIMARY KEY (title)

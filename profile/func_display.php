@@ -1,4 +1,4 @@
-<?php 
+<?php
     function display_profile($user_info){
 ?>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <title>Profile</title>
-        <link rel="stylesheet" href="styles/profile.css">
+        <link rel="stylesheet" href="../design/styles/profile.css">
     </head>
     <body>
         <div class="page-content page-container" id="page-content">
@@ -55,6 +55,6 @@
         </div>
     </body>
 </html>
-<?php 
+<?php
     }
 ?>
