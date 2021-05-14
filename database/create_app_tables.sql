@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS projectLabels;
 DROP TABLE IF EXISTS userLabels;
 DROP TABLE IF EXISTS userProject;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   pseudo VARCHAR(256) NOT NULL,
   email VARCHAR(256) NOT NULL UNIQUE,
   gender VARCHAR(256) NOT NULL,
@@ -15,12 +15,12 @@ CREATE TABLE users (
   PRIMARY KEY (pseudo)
 );
 
-CREATE TABLE tags (
+CREATE TABLE IF NOT EXISTS tags (
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (label)
 );
 
-CREATE TABLE projects (
+CREATE TABLE IF NOT EXISTS projects (
   title VARCHAR(50) NOT NULL,
   description VARCHAR(256) NOT NULL,
   PRIMARY KEY (title)
@@ -34,7 +34,7 @@ CREATE TABLE projects (
 3. userProject: a user can build many projects and the project can have many collaborators
 */
 
-CREATE TABLE projectLabels(
+CREATE TABLE IF NOT EXISTS projectLabels(
   project VARCHAR(50) NOT NULL,
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (project, label),
@@ -43,7 +43,7 @@ CREATE TABLE projectLabels(
 );
 
 
-CREATE TABLE userLabels(
+CREATE TABLE IF NOT EXISTS userLabels(
   user VARCHAR(256) NOT NULL,
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (user, label),
@@ -52,7 +52,7 @@ CREATE TABLE userLabels(
 );
 
 
-CREATE TABLE userProject(
+CREATE TABLE IF NOT EXISTS userProject(
   user VARCHAR(256) NOT NULL,
   project VARCHAR(50) NOT NULL,
   PRIMARY KEY (user, project),
