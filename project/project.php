@@ -7,12 +7,14 @@
   session_start();
   $errors = array();
 
+
   if(isset($_GET["action"])){
     switch ($_GET["action"]) {
       case 'create_project':
         if (empty($_POST)){
           header('Location: profile.php');
         }else{
+          // TODO: check if user is logged
           // TODO: get form errors;
           // TODO: validate form data;
           save_project($_POST);

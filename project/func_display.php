@@ -9,11 +9,11 @@
         <title>Project Creation</title>
       </head>
       <body>
-        <form class="" action="project.php?action=create_project" method="post">
-          <input type="text" name="title" placeholder="Project title">
-          <input type="text" name="description" placeholder="Project description">
+        <form class="" action="project.php?action=create_project" method="post" required>
+          <input type="text" name="title" placeholder="Project title" required>
+          <input type="text" name="description" placeholder="Project description" required>
           <button type="submit">create</button>
-          <select class="" name="labels[]" multiple>
+          <select class="" name="labels[]" multiple required>
             <?php  generate_tags();?>
           </select>
         </form>
