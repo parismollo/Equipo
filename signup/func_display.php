@@ -14,6 +14,16 @@
       box-sizing: border-box;
       font-size: 14px;
     }
+
+    h2 {
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 0px;
+    padding-top: 0px;
+    background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
     </style>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -25,18 +35,19 @@
       <body>
         <div class="login-page">
           <div class="form">
+            <h2>Equipo</h2>
             <form class="login-form" action="signup.php?action=signup" method="post">
               <input type="text" name="pseudo" placeholder="pseudo"/>
               <p class="error"><?php  if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p>
               <input type="email" name="email" placeholder="email adress"/>
               <p class="error"><?php  if (check_error($errors, "email")) echo $errors["email"];?></p>
-              <p>Gender</p>
+              <!-- <p>Gender</p> -->
               <select name="gender" size="1">
                 <option value="M">Male</option>
                 <option value="F">Female</option>
                 <option value="O">Other</option>
               </select>
-              <p>Birthdate</p>
+              <!-- <p>Birthdate</p> -->
               <input type="date" name="date"/>
               <p class="error"><?php  if (check_error($errors, "date")) echo $errors["date"];?></p>
               <input type="password" name="password" placeholder="password"/>
