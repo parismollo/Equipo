@@ -60,7 +60,7 @@
         </form>
     </div>
 </div>
-<?php 
+<?php
     }
 
     function basic_profile($user_info){
@@ -87,6 +87,9 @@
         <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
     <div class="row"></div>
 </div>
-<?php 
+<?php
+    }
+    function check_error($errors, $key){
+      return isset($errors[$key]);
     }
 ?>
