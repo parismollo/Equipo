@@ -73,7 +73,7 @@
             <form class="login-form" action="project.php?action=create_project" method="post">
               <input type="text" name="title" placeholder="Project title" required/>
               <!-- <p class="error"><?php  //if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p> -->
-              <textarea name="name" rows="8" cols="80" name="description" placeholder="Project description" required></textarea>
+              <textarea rows="8" cols="80" name="description" placeholder="Project description" required></textarea>
               <select class="" name="labels[]" multiple required>
                 <?php  generate_tags();?>
               </select>

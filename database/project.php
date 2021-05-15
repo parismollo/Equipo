@@ -1,5 +1,6 @@
 <?php
   require_once('connection.php');
+  require_once('../signup/func_display.php');
   $server = "localhost"; // change according to your settings
   $user = "root";
   $password = "";
@@ -80,7 +81,7 @@
       if (!$res){
         $error = mysqli_error($connection);
         // TODO: add title verification like in signup (pseudo)
-        display_error_page($error, "profile.php");
+        display_error_page($error, "../profile/profile.php");
         exit;
       }else{
         save_user_to_project($_SESSION["user"], $user_input["title"]);
@@ -92,7 +93,7 @@
         // header('Location: ../profile/profile.php');
       }
     }else{
-      display_error_page("Connection failed", "profile.php");
+      display_error_page("Connection failed", "../profile/profile.php");
       exit;
     }
     mysqli_close($connection);
