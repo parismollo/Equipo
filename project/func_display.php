@@ -72,4 +72,41 @@
       echo "<option value=\"$value\">$value</option>";
     }
   }
+
+  function display_project($project_info, $errors, $valid){
+    ?>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+        <link rel="stylesheet" href="../design/styles/new_profile.css">
+      </head>
+      <body>
+        <div class="form">
+          <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
+            <a class="message" href="">My profile</a>
+            <a class="message" href="">Delete Profile</a>
+        </div>
+        <div class="form">
+          <div>
+              <?php if(!empty($project_info)) basic_project_profile($project_info);?>
+          </div>
+        </div>
+      </body>
+    </html>
+    <?php
+  }
+
+  function basic_project_profile($project_info){
+    ?>
+      <h2 style="margin:0px;">Information</h2>
+      <p>Project Name</p>
+      <h4><?php echo $project_info["title"];?></h4>
+      <p>Collaborators</p>
+      <?php foreach ($project_info["Collaborators"]; as $key => $value): ?>
+        <h4><?php echo $value;?></h4>
+      <?php endforeach; ?>
+<?php
+  }
 ?>
