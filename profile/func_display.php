@@ -77,9 +77,9 @@
         <div class="">
               <form class="" action="profile.php?action=valid_update" method="post">
                       <input type="password" name="password" placeholder="change password"/>
-                      <p class="error"><?php  if (check_error($errors, "password")) echo $errors["password"];?></p>
+                      <p class="error"><?php  if (check_error2($errors, "password")) echo $errors["password"];?></p>
                       <input type="password" name="password2" placeholder="confirm password"/>
-                      <p class="error"><?php  if (check_error($errors, "password2")) echo $errors["password2"];?></p>
+                      <p class="error"><?php  if (check_error2($errors, "password2")) echo $errors["password2"];?></p>
                       <p class="error"><?php  if (isset($valid)) echo $valid;?></p>
                       <button type="submit">Update password</button>
               </form>
@@ -105,7 +105,7 @@
 <?php
     }
 
-    function check_error($errors, $key){
+    function check_error2($errors, $key){
       return isset($errors[$key]);
     }
 ?>
