@@ -99,6 +99,9 @@
         <p>Gender</p>
         <h4><?php echo $user_info["gender"];?></h4>
         <h2>Projects</h2>
+        <form action="../project/project.php">
+          <button class="button2" type="submit">add project</button>
+        </form>
 <?php
     }
 

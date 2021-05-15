@@ -65,6 +65,27 @@
   background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
 }
 
+
+.form .button2 {
+  font-family: "Poppins", sans-serif;
+  border-radius: 80px;
+  outline: 0;
+  background: #4CAF50;
+  width: fit-content;
+  border: 0;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgb(77,7,157);
+  background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
+}
+
+.form .button2:hover{
+  background: rgb(134,242,114);
+  background: linear-gradient(90deg, rgba(134,242,114,1) 11%, rgba(59,240,18,1) 100%);
+}
+
 .form .message {
   margin-right: 3px;
   color: #b3b3b3;
