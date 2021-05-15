@@ -88,9 +88,7 @@
         foreach ($user_input["labels"] as $key => $value) {
           save_project_to_tag($user_input, $value);
         }
-        echo "debug3";
-        exit;
-        // header('Location: ../profile/profile.php');
+        header('Location: ../profile/profile.php');
       }
     }else{
       display_error_page("Connection failed", "../profile/profile.php");
