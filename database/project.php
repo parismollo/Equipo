@@ -124,5 +124,29 @@
     return $titles;
   }
 
+  function project_query_info($title){
+      $query = "SELECT * FROM projects WHERE title = '$title';";
+      return $query;
+  }
+
+  function project_info($title){
+      global $server, $user, $password, $database;
+      $connection = connect_to_db($server, $user, $password, $database);
+      if(isset($connection)){
+          $query = project_query_info($title);
+          $res = mysqli_query($connection, $query);
+          if(!$res){
+              display_error_page("Invalid Query !", "");
+          }else{
+              while ($row = mysqli_fetch_assoc($res)){
+                  foreach($row as $key => $value){
+                      $project_info[$key] = $value;
+                  }
+              }
+          }
+          return $project_info;
+      }
+  }
+
 
 ?>

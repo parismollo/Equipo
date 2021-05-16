@@ -67,8 +67,8 @@
       <p>Gender</p>
       <h4><?php echo $user_info["gender"];?></h4>
       <h2>Projects</h2>
-      <form style="margin-bottom: 5px;" action="" method="post">
-        <select class="" name="projects[]" required>
+      <form style="margin-bottom: 5px;" action="../project/project.php?action=project_post" method="post">
+        <select class="" name="project" required>
           <option value="" selected>Please select</option>
           <?php generate_projects($user_info["pseudo"]);?>
         </select>

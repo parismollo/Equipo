@@ -20,6 +20,14 @@
           save_project($_POST);
         }
         break;
+      case "project_post":
+        if (empty($_POST)){
+          header("Location: profile.php");
+        }else{
+          $project_info = project_info($_POST["project"]);
+          display_project($project_info);
+        }
+        break;
 
       default:
         project_form($errors, "");

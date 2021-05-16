@@ -73,7 +73,7 @@
     }
   }
 
-  function display_project($project_info, $errors, $valid){
+  function display_project($project_info){
     ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -85,8 +85,8 @@
       <body>
         <div class="form">
           <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
-            <a class="message" href="">My profile</a>
-            <a class="message" href="">Delete Profile</a>
+            <a class="message" href="../profile/profile.php">My profile</a>
+            <a class="message" href="../profile/profile.php">Delete Project</a>
         </div>
         <div class="form">
           <div>
@@ -103,10 +103,9 @@
       <h2 style="margin:0px;">Information</h2>
       <p>Project Name</p>
       <h4><?php echo $project_info["title"];?></h4>
-      <p>Collaborators</p>
-      <?php foreach ($project_info["Collaborators"]; as $key => $value): ?>
-        <h4><?php echo $value;?></h4>
-      <?php endforeach; ?>
+      <p>description</p>
+      <h4><?php echo $project_info["description"];?></h4>
+
 <?php
   }
 ?>
