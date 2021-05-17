@@ -40,6 +40,7 @@
     <?php
   }
 
+
   function update_profile($errors, $valid){
     ?>
       <div class="">
@@ -87,6 +88,7 @@
   function check_error2($errors, $key){
     return isset($errors[$key]);
   }
+
 
   function generate_projects($pseudo){
     $titles = list_all_projects($pseudo);
