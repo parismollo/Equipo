@@ -96,4 +96,57 @@
     }
     mysqli_close($connection);
   }
+
+  function list_all_projects($pseudo){
+    global $server, $user, $password, $database;
+    $titles = array();
+    // 1. connection 2.generate insert query 3. insert user and handle return.
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (!$connection){
+      // TODO: Display error page
+      echo "bug1";
+      exit;
+    }else{
+      $query = "SELECT title FROM projects JOIN userProject ON projects.title = userProject.project WHERE userProject.user = '$pseudo';";
+      $result = mysqli_query($connection, $query);
+      if(!$result){
+        // TODO: display error page
+        echo "bug2";
+        exit;
+      }else{
+        $row = mysqli_fetch_assoc($result);
+        while ($row){
+          $titles[] = $row["title"];
+          $row = mysqli_fetch_assoc($result);
+        }
+      }
+    }
+    return $titles;
+  }
+
+  function project_query_info($title){
+      $query = "SELECT * FROM projects WHERE title = '$title';";
+      return $query;
+  }
+
+  function project_info($title){
+      global $server, $user, $password, $database;
+      $connection = connect_to_db($server, $user, $password, $database);
+      if(isset($connection)){
+          $query = project_query_info($title);
+          $res = mysqli_query($connection, $query);
+          if(!$res){
+              display_error_page("Invalid Query !", "");
+          }else{
+              while ($row = mysqli_fetch_assoc($res)){
+                  foreach($row as $key => $value){
+                      $project_info[$key] = $value;
+                  }
+              }
+          }
+          return $project_info;
+      }
+  }
+
+
 ?>
