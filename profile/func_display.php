@@ -67,13 +67,17 @@
       <p>Gender</p>
       <h4><?php echo $user_info["gender"];?></h4>
       <h2>Projects</h2>
-      <form style="margin-bottom: 5px;" action="../project/project.php?action=project_post" method="post">
-        <select class="" name="project" required>
+      <?php if (sizeof(list_all_projects($user_info["pseudo"]))!=0){
+        ?>
+        <form style="margin-bottom: 5px;" action="../project/project.php?action=project_post" method="post">
+          <select class="" name="project" required>
           <option value="" selected>Please select</option>
           <?php generate_projects($user_info["pseudo"]);?>
-        </select>
-        <button class="button3" type="submit">view project</button>
-      </form>
+          </select>
+          <button class="button3" type="submit">view project</button>
+        </form>
+        <?php
+      } ?>
       <form style="margin-top:0px;" action="../project/project.php">
         <button class="button2" type="submit">new project</button>
       </form>
@@ -86,10 +90,8 @@
 
   function generate_projects($pseudo){
     $titles = list_all_projects($pseudo);
-    echo "<option value=\"x\">$size</option>";
     foreach ($titles as $key => $value) {
       echo "<option value=\"$value\">$value</option>";
-
     }
   }
 ?>
