@@ -81,6 +81,12 @@
         <meta charset="utf-8">
         <title>Project</title>
         <link rel="stylesheet" href="../design/styles/new_profile.css">
+        <style>
+          body{
+            background: rgb(77,7,157);
+            background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
+          }
+        </style>
       </head>
       <body>
         <div class="form">
