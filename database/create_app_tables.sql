@@ -26,6 +26,12 @@ CREATE TABLE IF NOT EXISTS projects (
   PRIMARY KEY (title)
 );
 
+INSERT INTO tags VALUES("Art");
+INSERT INTO tags VALUES("Science");
+INSERT INTO tags VALUES("Sports");
+INSERT INTO tags VALUES("Fashion");
+INSERT INTO tags VALUES("Gaming");
+INSERT INTO tags VALUES("Finance");
 
 -- Many 2 Many tables
 /*
