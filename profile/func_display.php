@@ -1,6 +1,7 @@
 <?php
   require_once("../database/project.php");
   require_once("../project/func_display.php");
+  require_once("func_query.php");
   function display_profile($user_info, $errors, $valid){
     ?>
     <style media="screen">
@@ -66,6 +67,8 @@
       <h2 style="margin:0px;">Information</h2>
       <p>Email</p>
       <h4><?php echo $user_info["email"];?></h4>
+      <p>Interests</p>
+      <?php generate_user_tags($user_info["pseudo"])?>
       <p>Username</p>
       <h4><?php echo $user_info["pseudo"];?></h4>
       <p>Day of Birth</p>
@@ -100,5 +103,20 @@
     foreach ($titles as $key => $value) {
       echo "<option value=\"$value\">$value</option>";
     }
+  }
+
+  function generate_user_tags($user_pseudo){
+    $tags = get_user_tags($user_pseudo);
+    $res = "";
+    $c = 0;
+    foreach ($tags as $key => $value) {
+      if ($key == 0){
+        $res = $res." ".$value;
+      }else{
+        $res = $res."/".$value;
+      }
+      $c++;
+    }
+    echo "<h4>$res</h4>";
   }
 ?>

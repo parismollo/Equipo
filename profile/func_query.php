@@ -6,6 +6,30 @@
         return $query;
     }
 
+    function get_user_tags($user){
+      $tags  = array();
+      $query = "SELECT label FROM userLabels WHERE user = '$user';";
+      global $server, $user, $password, $database;
+      $connection = connect_to_db($server, $user, $password, $database);
+      if (isset($connection)){
+        $res = mysqli_query($connection, $query);
+        if(!$res){
+          $error = mysqli_error($connection);
+          // TODO: DELETE PROJECT
+          echo "debug user_tag 1";
+        }
+        while ($row = mysqli_fetch_assoc($res)){
+            foreach($row as $key => $value){
+                $tags[] = $value;
+            }
+        }
+      }else{
+        echo "debug user tag result";
+      }
+      mysqli_close($connection);
+      return $tags;
+    }
+
     function update_user_query($user_input, $connection){
         foreach ($user_input as $key => $value) {
           if ($key!="labels"){
