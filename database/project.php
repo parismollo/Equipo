@@ -61,8 +61,6 @@
         $error = mysqli_error($connection);
         // TODO: DELETE PROJECT
         echo "debug1";
-      }else{
-        header('Location: ../profile/profile.php');
       }
     }else{
       // TODO: DELETE PROJECT
@@ -127,6 +125,54 @@
   function project_query_info($title){
       $query = "SELECT * FROM projects WHERE title = '$title';";
       return $query;
+  }
+
+  function get_project_tags($project_title){
+    $tags  = array();
+    $query = "SELECT label FROM projectLabels WHERE project = '$project_title';";
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        // TODO: DELETE PROJECT
+        echo "debug project_tag 1";
+      }
+      while ($row = mysqli_fetch_assoc($res)){
+          foreach($row as $key => $value){
+              $tags[] = $value;
+          }
+      }
+    }else{
+      echo "debug user tag result";
+    }
+    mysqli_close($connection);
+    return $tags;
+  }
+
+  function get_project_collaborators($project_title){
+    $colabs  = array();
+    $query = "SELECT pseudo FROM users JOIN userProject ON users.pseudo = userProject.user WHERE userProject.project = '$project_title';";
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        // TODO: DELETE PROJECT
+        echo "debub";
+      }
+      while ($row = mysqli_fetch_assoc($res)){
+          foreach($row as $key => $value){
+              $colabs[] = $value;
+          }
+      }
+    }else{
+      echo "debug user tag result";
+    }
+    mysqli_close($connection);
+    return $colabs;
   }
 
   function project_info($title){
