@@ -1,5 +1,6 @@
 <?php
   require_once("../database/project.php");
+  require_once("../project/func_display.php");
   function display_profile($user_info, $errors, $valid){
     ?>
     <style media="screen">
@@ -30,7 +31,7 @@
             <a class="message" href="profile.php?action=update">Update profile</a>
             <a class="message" href="../login/login.php?action=reset">Reset session</a>
         </div>
-        <div class="form">
+        <div class="form" style="padding:30px;">
           <div>
               <?php if(!empty($user_info)) basic_profile($user_info); else update_profile($errors, $valid);?>
           </div>
@@ -45,11 +46,15 @@
     ?>
       <div class="">
             <form class="" action="profile.php?action=valid_update" method="post">
+                    Add here your interests!
+                    <select class="" name="labels[]" multiple>
+                      <?php  generate_tags();?>
+                    </select>
                     <input type="password" name="password" placeholder="change password"/>
                     <p class="error"><?php  if (check_error2($errors, "password")) echo $errors["password"];?></p>
                     <input type="password" name="password2" placeholder="confirm password"/>
                     <p class="error"><?php  if (check_error2($errors, "password2")) echo $errors["password2"];?></p>
-                    <p class="error"><?php  if (isset($valid)) echo $valid;?></p>
+                    <p class="error" style="text-align:center"><?php  if (isset($valid)) echo $valid;?></p>
                     <button type="submit">Update password</button>
             </form>
         </div>

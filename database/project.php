@@ -61,8 +61,6 @@
         $error = mysqli_error($connection);
         // TODO: DELETE PROJECT
         echo "debug1";
-      }else{
-        header('Location: ../profile/profile.php');
       }
     }else{
       // TODO: DELETE PROJECT
