@@ -1,5 +1,6 @@
 <?php
   require_once("../database/tag.php");
+  require_once("../database/project.php");
   function project_form(&$errors, $wrong){
     ?>
     <style>
@@ -111,7 +112,23 @@
       <h4><?php echo $project_info["title"];?></h4>
       <p>description</p>
       <h4><?php echo $project_info["description"];?></h4>
-
+      <p>Interests</p>
+      <?php generate_project_tags($project_info["title"])?>
 <?php
+  }
+
+  function generate_project_tags($user_pseudo){
+    $tags = get_project_tags($user_pseudo);
+    $res = "";
+    $c = 0;
+    foreach ($tags as $key => $value) {
+      if ($key == 0){
+        $res = $res." ".$value;
+      }else{
+        $res = $res."/".$value;
+      }
+      $c++;
+    }
+    echo "<h4>$res</h4>";
   }
 ?>

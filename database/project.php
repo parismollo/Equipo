@@ -127,6 +127,30 @@
       return $query;
   }
 
+  function get_project_tags($project_title){
+    $tags  = array();
+    $query = "SELECT label FROM projectLabels WHERE project = '$project_title';";
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        // TODO: DELETE PROJECT
+        echo "debug project_tag 1";
+      }
+      while ($row = mysqli_fetch_assoc($res)){
+          foreach($row as $key => $value){
+              $tags[] = $value;
+          }
+      }
+    }else{
+      echo "debug user tag result";
+    }
+    mysqli_close($connection);
+    return $tags;
+  }
+
   function project_info($title){
       global $server, $user, $password, $database;
       $connection = connect_to_db($server, $user, $password, $database);
