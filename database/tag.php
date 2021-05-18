@@ -2,8 +2,8 @@
   require_once('connection.php');
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "";
-  $database = "equipo";
+  $password = "voiture93";
+  $database = "Equipo";
 
 
   function list_all_tags(){

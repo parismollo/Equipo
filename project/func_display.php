@@ -1,6 +1,7 @@
 <?php
   require_once("../database/tag.php");
   require_once("../database/project.php");
+  require_once("../login/func_display.php");
   function project_form(&$errors, $wrong){
     ?>
     <style>
@@ -59,6 +60,9 @@
               </select>
               <button type="submit">create</button>
             </form>
+            <div>
+              <a href="../profile/profile.php">Go back</a>
+            </div>
           </div>
         </div>
       </body>
@@ -90,11 +94,14 @@
         </style>
       </head>
       <body>
+        <form action="project.php?action=delete" method="POST">
+          <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
         <div class="form">
           <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
             <a class="message" href="../profile/profile.php">My profile</a>
-            <a class="message" href="../profile/profile.php">Delete Project</a>
+            <button type="submit">Delete project</button>
         </div>
+        </form>
         <div class="form">
           <div>
               <?php if(!empty($project_info)) basic_project_profile($project_info);?>
@@ -147,5 +154,27 @@
       $c++;
     }
     echo "<h4>$res</h4>";
+  }
+
+  function display_delete_success(){
+    ?>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+        <link rel="stylesheet" href="../design/styles/failed_redirection.css">
+      </head>
+      <body>
+        <div class="error-page">
+          <div class="error_main">
+            <h1>Project deleted successfully !</h1>
+            <p class="message"><a href="../profile/profile.php">Return to profile</a></p>
+          </div>
+          </div>
+        </div>
+      </body>
+    </html>
+    <?php
   }
 ?>

@@ -4,6 +4,7 @@
   error_reporting(E_ALL);
   require_once("../database/project.php");
   require_once("func_display.php");
+  require_once("../database/delete_project.php");
   session_start();
   $errors = array();
 
@@ -27,6 +28,12 @@
           $project_info = project_info($_POST["project"]);
           display_project($project_info);
         }
+        break;
+      case "delete":
+        delete_userproject($_POST["project"]);
+        delete_projectLabels($_POST["project"]);
+        delete_project($_POST["project"]);
+        display_delete_success();
         break;
 
       default:
