@@ -80,7 +80,48 @@
       echo "<option value=\"$value\">$value</option>";
     }
   }
+  function display_other_project($project_info){
+    ?>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+        <link rel="stylesheet" href="../design/styles/new_profile.css">
+        <style>
+          .form button{
+            margin-right: 3px;
+            color: #b3b3b3;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bolder;
+            background: transparent;
+            width: fit-content;
+          }
 
+          .form button:hover{
+            color: rgba(77,7,157,1);
+          }
+          body{
+            background: rgb(77,7,157);
+            background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
+          }
+        </style>
+      </head>
+      <body>
+        <div class="form" style="padding:25px">
+        <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
+        </div>
+        </form>
+        <div class="form">
+          <div>
+              <?php if(!empty($project_info)) other_basic_project_profile($project_info);?>
+          </div>
+        </div>
+      </body>
+    </html>
+    <?php
+  }
   function display_project($project_info){
     ?>
     <!DOCTYPE html>
@@ -126,6 +167,20 @@
       </body>
     </html>
     <?php
+  }
+
+  function other_basic_project_profile($project_info){
+    ?>
+      <h2 style="margin:0px;">Information</h2>
+      <p>Project Name</p>
+      <h4><?php echo $project_info["title"];?></h4>
+      <p>description</p>
+      <h4><?php echo $project_info["description"];?></h4>
+      <p>Tags</p>
+      <?php generate_project_tags($project_info["title"])?>
+      <p>Collaborators</p>
+      <?php generate_project_collaborators($project_info["title"])?>
+<?php
   }
 
   function basic_project_profile($project_info){

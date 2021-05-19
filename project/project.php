@@ -9,10 +9,21 @@
   session_start();
   $errors = array();
 
-
-  if(isset($_GET["action"])){
-    switch ($_GET["action"]) {
-      case 'create_project':
+  if (isset($_SESSION["user"])){
+    if (isset($_GET["project"])){
+      // TODO: redirect to profile if pseudo = user session
+      $project_title = $_GET["project"];
+      $project_info = get_other_project_post($project_title);
+      if (!empty($project_info)){
+        display_other_project($project_info);
+      }
+      // TODO: error here
+      echo "error";
+      exit;
+    }
+    if(isset($_GET["action"])){
+      switch ($_GET["action"]) {
+        case 'create_project':
         if (empty($_POST)){
           header('Location: profile.php');
         }else{
@@ -25,7 +36,7 @@
           }
         }
         break;
-      case "project_post":
+        case "project_post":
         if (empty($_POST)){
           header("Location: profile.php");
         }else{
@@ -33,19 +44,22 @@
           display_project($project_info);
         }
         break;
-      case "delete":
+        case "delete":
         delete_userproject($_POST["project"]);
         delete_projectLabels($_POST["project"]);
         delete_project($_POST["project"]);
         display_delete_success();
         break;
 
-      default:
+        default:
         project_form($errors, "");
         break;
+      }
+    }else{
+      project_form($errors, "");
     }
   }else{
-    project_form($errors, "");
+    header('Location: ../login/login.php');
   }
 
 

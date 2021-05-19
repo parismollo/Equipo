@@ -20,6 +20,39 @@
 
   }
 
+  function get_other_user_profile(&$user_pseudo){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $user_pseudo = mysqli_real_escape_string($connection, $user_pseudo);
+      $query = "SELECT * FROM users WHERE pseudo = '$user_pseudo'";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        // TODO: display_error_page();
+        echo "error";
+        exit;
+      }else{
+        $user_info = other_user_info($res);
+        return $user_info;
+      }
+    }else{
+      // TODO: display_error_page();
+      echo "error";
+      exit;
+    }
+  }
+
+  function other_user_info($res){
+    $user_info = array();
+    while ($row = mysqli_fetch_assoc($res)){
+        foreach($row as $key => $value){
+            $user_info[$key] = $value;
+        }
+    }
+    return $user_info;
+  }
+
   function login_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
       $user_input[$key] = mysqli_real_escape_string($connection, $user_input[$key]);
