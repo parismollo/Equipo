@@ -90,6 +90,19 @@
         <title>Project</title>
         <link rel="stylesheet" href="../design/styles/new_profile.css">
         <style>
+          .form button{
+            margin-right: 3px;
+            color: #b3b3b3;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bolder;
+            background: transparent;
+            width: fit-content;
+          }
+
+          .form button:hover{
+            color: rgba(77,7,157,1);
+          }
           body{
             background: rgb(77,7,157);
             background: linear-gradient(90deg, rgba(77,7,157,1) 11%, rgba(255,123,214,1) 100%);
@@ -99,7 +112,7 @@
       <body>
         <form action="project.php?action=delete" method="POST">
           <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
-        <div class="form">
+        <div class="form" style="padding:25px">
           <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
             <a class="message" href="../profile/profile.php">My profile</a>
             <button type="submit">Delete project</button>
