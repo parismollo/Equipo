@@ -5,6 +5,7 @@
   require_once("../database/project.php");
   require_once("func_display.php");
   require_once("../database/delete_project.php");
+  require_once("func_valid.php");
   session_start();
   $errors = array();
 
@@ -15,10 +16,13 @@
         if (empty($_POST)){
           header('Location: profile.php');
         }else{
-          // TODO: check if user is logged
-          // TODO: get form errors;
-          // TODO: validate form data;
-          save_project($_POST);
+          $errors = get_errors($_POST, $errors);
+          $is_valid = is_valid($_POST);
+          if ($is_valid){
+            save_project($_POST);
+          }else{
+            project_form($errors, "");
+          }
         }
         break;
       case "project_post":

@@ -12,28 +12,20 @@
     }
   }
 
-  function get_password_error(&$data, &$errors){
-    if($data["password"] != $data["password2"]){
-      $errors["password2"] = "Passwords doesn't matches !";
-    }
-  }
-
-  function is_password_valid(&$data){
-    if($data["password"] != $data["password2"]){
-      return false;
-    }
-    return true;
-  }
 
   function get_required_errors(&$data, &$errors){
+    if (!isset($data["labels"])){
+      $errors["labels"] = " This field is required!";
+    }
     foreach ($data as $key => $value) {
       if(empty($data[$key])){
-        $errors[$key] = "This field is required!";
+        $errors[$key] = " This field is required!";
       }
     }
   }
 
   function is_required_valid(&$data){
+    if (!isset($data["labels"])){return false;}
     foreach ($data as $key => $value) {
       if(empty($data[$key])){
         return false;
@@ -43,7 +35,6 @@
   }
 
   function get_errors($data, $errors){
-    get_password_error($data, $errors);
     get_required_errors($data, $errors);
     return $errors;
 
@@ -51,8 +42,7 @@
 
   function is_valid($data){
     $check_1 = is_required_valid($data);
-    $check_2 = is_password_valid($data);
-    return ($check_1 && $check_2);
+    return $check_1;
 
   }
 

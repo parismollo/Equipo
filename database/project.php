@@ -76,9 +76,14 @@
     if (isset($connection)){
       $query = create_project_query($user_input, $connection);
       $res = mysqli_query($connection, $query);
+      $check_project_title = mysqli_query($connection, project_query_info($user_input["title"], $connection));
+      $available_project_title = (mysqli_num_rows($check_project_title)==0);
       if (!$res){
         $error = mysqli_error($connection);
-        // TODO: add title verification like in signup (pseudo)
+        if(!$available_project_title){
+          project_form($errors, "This project title has been taken. Try something else!");
+          exit;
+        }
         display_error_page($error, "../profile/profile.php");
         exit;
       }else{
@@ -122,9 +127,10 @@
     return $titles;
   }
 
-  function project_query_info($title){
-      $query = "SELECT * FROM projects WHERE title = '$title';";
-      return $query;
+  function project_query_info($title, $connection){
+    $title = mysqli_real_escape_string($connection, $title);
+    $query = "SELECT * FROM projects WHERE title = '$title';";
+    return $query;
   }
 
   function get_project_tags($project_title){
@@ -179,7 +185,7 @@
       global $server, $user, $password, $database;
       $connection = connect_to_db($server, $user, $password, $database);
       if(isset($connection)){
-          $query = project_query_info($title);
+          $query = project_query_info($title, $connection);
           $res = mysqli_query($connection, $query);
           if(!$res){
               display_error_page("Invalid Query !", "");

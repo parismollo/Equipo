@@ -107,6 +107,15 @@ select {
   background: linear-gradient(90deg, rgba(134,242,114,1) 11%, rgba(59,240,18,1) 100%);
 }
 
+
+.form .button4 {
+  margin-right: 3px;
+  color: #b3b3b3;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
 .form .message {
   margin-right: 3px;
   color: #b3b3b3;
