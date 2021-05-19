@@ -52,12 +52,15 @@
           <div class="form">
             <h2>Project Creation</h2>
             <form class="login-form" action="project.php?action=create_project" method="post">
-              <input type="text" name="title" placeholder="Project title" required/>
-              <!-- <p class="error"><?php  //if (check_error($errors, "pseudo")) echo $errors["pseudo"];?></p> -->
-              <textarea rows="8" cols="80" name="description" placeholder="Project description" required></textarea>
-              <select class="" name="labels[]" multiple required>
+              <input type="text" name="title" placeholder="Project title"/>
+              <p class="error"><?php  if (check_error($errors, "title")) echo $errors["title"];?></p>
+              <textarea rows="8" cols="80" name="description" placeholder="Project description"></textarea>
+              <p class="error"><?php  if (check_error($errors, "description")) echo $errors["description"];?></p>
+              <select class="" name="labels[]" multiple>
                 <?php  generate_tags();?>
               </select>
+              <p class="error"><?php  if (check_error($errors, "labels")) echo $errors["labels"];?></p>
+              <p class="error"><?php if (isset($wrong)) echo $wrong;?></p>
               <button type="submit">create</button>
             </form>
             <div>
