@@ -28,6 +28,7 @@
       <body>
         <div class="form">
           <h1 style="margin-top:0px;"><?php echo $_SESSION["user"];?></h1>
+            <a class="message" href="../test/search_bar.php">Home page</a>
             <a class="message" href="profile.php">My profile</a>
             <a class="message" href="profile.php?action=update">Update profile</a>
             <a class="message" href="../login/login.php?action=reset">Reset session</a>

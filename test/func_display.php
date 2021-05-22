@@ -10,6 +10,10 @@
     <title>Welcome</title>
 </head>
 <body>
+    <div>
+        <a href="search_bar.php">Home page</a>
+        <a href="../profile/profile.php">My profile</a>
+    </div>
     <form action="search_bar.php?action=valid" method="post">
         <input type="text" name="project" required/> 
         <button type="submit">search</button>
@@ -20,6 +24,10 @@
         }else {
             if(!empty($action)){
                 echo "<h1>No projects found with this name !</h1>";
+            } else{
+                $tab1 = search_tag_user($_SESSION['user']);
+                $tab = search_project_homepage($tab1);
+                display_request_project($tab);
             }
         }
     ?>

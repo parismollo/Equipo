@@ -89,4 +89,56 @@
         }
         return $res;
     }
+
+    function search_tag_user($session){
+        global $server, $user, $password, $database;
+        $connection = connect_to_db($server, $user, $password, $database);
+        $tab_project = array();
+        if (isset($connection)){
+            $query = "SELECT label FROM userLabels WHERE user='$session';";
+            $result = mysqli_query($connection, $query);
+            if (!$result){
+                $error = mysqli_error($connection);
+                display_error_page($error, "");
+                exit;
+            }else {
+                while ($row = mysqli_fetch_assoc($result)){
+                    $tab_project[] = $row['label'];
+                }    
+            }
+        }else{
+            display_error_page("Connection failed", "");
+            exit;
+        }
+        mysqli_close($connection);
+        return $tab_project;
+    }
+
+    function search_project_homepage($tab_label){
+        global $server, $user, $password, $database;
+        $connection = connect_to_db($server, $user, $password, $database);
+        $tab_project = array();
+        if(!empty($tab_label)){
+            foreach($tab_label as $value){
+                if (isset($connection)){
+                    $query = "SELECT title, description FROM projects JOIN projectLabels ON projects.title = projectLabels.project WHERE projectLabels.label='$value';";
+                    $result = mysqli_query($connection, $query);
+                    if (!$result){
+                        $error = mysqli_error($connection);
+                        display_error_page($error, "");
+                        exit;
+                    }else {
+                        while ($row = mysqli_fetch_assoc($result)){
+                            $tab_project[$row['title']] = $row['description'];
+                        }    
+                    }
+                }else{
+                    display_error_page("Connection failed", "");
+                    exit;
+                }
+            }
+        }
+        mysqli_close($connection);
+        return $tab_project;
+    }
 ?>
