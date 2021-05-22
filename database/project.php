@@ -233,5 +233,27 @@
       }
   }
 
+  function count_likes($title){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $query = "SELECT COUNT(*) FROM userProjectLikes WHERE project = '$title';";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        echo $error;
+      }else{
+        while ($row = mysqli_fetch_assoc($res)){
+          foreach($row as $key => $value){
+            $likes[$key] = $value;
+          }
+        }
+        return $likes["COUNT(*)"];
+      }
+    }else{
+      return -1;
+    }
+  }
+
 
 ?>

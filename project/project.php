@@ -53,6 +53,17 @@
         display_delete_success();
         break;
 
+        case "like":
+          // TODO: DON'T ALLOW USER TO ENTER HERE BY URL IF HE LIKED
+          $project = $_POST["project"];
+          likeProject($project, $_SESSION["user"]);
+          header("Location: project.php?project=$project");
+          break;
+        case "dislike":
+          // TODO: DON'T ALLOW USER TO ENTER HERE BY URL IF HE LIKED
+          $project = $_POST["project"];
+          dislikeProject($project, $_SESSION["user"]);
+          header("Location: project.php?project=$project");
         default:
         project_form($errors, "");
         break;

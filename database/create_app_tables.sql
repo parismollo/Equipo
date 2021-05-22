@@ -1,12 +1,15 @@
 -- Start the MySQL server and run this file to create user table.
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS tags;
-DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS userProjectLikes;
 DROP TABLE IF EXISTS projectLabels;
 DROP TABLE IF EXISTS userLabels;
 DROP TABLE IF EXISTS userProject;
+DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS projects;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE IF NOT EXISTS users (
+
+
+CREATE TABLE users (
   pseudo VARCHAR(256) NOT NULL,
   email VARCHAR(256) NOT NULL UNIQUE,
   gender VARCHAR(256) NOT NULL,
@@ -15,12 +18,12 @@ CREATE TABLE IF NOT EXISTS users (
   PRIMARY KEY (pseudo)
 );
 
-CREATE TABLE IF NOT EXISTS tags (
+CREATE TABLE tags (
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (label)
 );
 
-CREATE TABLE IF NOT EXISTS projects (
+CREATE TABLE projects (
   title VARCHAR(50) NOT NULL,
   description VARCHAR(256) NOT NULL,
   PRIMARY KEY (title)
@@ -40,7 +43,7 @@ INSERT INTO tags VALUES("Finance");
 3. userProject: a user can build many projects and the project can have many collaborators
 */
 
-CREATE TABLE IF NOT EXISTS projectLabels(
+CREATE TABLE projectLabels(
   project VARCHAR(50) NOT NULL,
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (project, label),
@@ -49,7 +52,7 @@ CREATE TABLE IF NOT EXISTS projectLabels(
 );
 
 
-CREATE TABLE IF NOT EXISTS userLabels(
+CREATE TABLE userLabels(
   user VARCHAR(256) NOT NULL,
   label VARCHAR(50) NOT NULL,
   PRIMARY KEY (user, label),
@@ -58,7 +61,15 @@ CREATE TABLE IF NOT EXISTS userLabels(
 );
 
 
-CREATE TABLE IF NOT EXISTS userProject(
+CREATE TABLE userProject(
+  user VARCHAR(256) NOT NULL,
+  project VARCHAR(50) NOT NULL,
+  PRIMARY KEY (user, project),
+  FOREIGN KEY (user) REFERENCES users(pseudo),
+  FOREIGN KEY (project) REFERENCES projects(title)
+);
+
+CREATE TABLE userProjectLikes(
   user VARCHAR(256) NOT NULL,
   project VARCHAR(50) NOT NULL,
   PRIMARY KEY (user, project),

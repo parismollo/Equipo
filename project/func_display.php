@@ -111,8 +111,8 @@
       <body>
         <div class="form" style="padding:25px">
         <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
+        <?php if (user_liked($project_info["title"])) display_dislike($project_info["title"]); else display_like($project_info["title"]) ?>
         </div>
-        </form>
         <div class="form">
           <div>
               <?php if(!empty($project_info)) other_basic_project_profile($project_info);?>
@@ -155,8 +155,9 @@
           <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
         <div class="form" style="padding:25px">
           <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
+            <a class="message">Upvote(s): <?php echo count_likes($project_info["title"])?></a>
             <a class="message" href="../profile/profile.php">My profile</a>
-            <button type="submit">Delete project</button>
+            <button style="padding:0px;"type="submit">Delete project</button>
         </div>
         </form>
         <div class="form">
@@ -248,4 +249,24 @@
     </html>
     <?php
   }
+
+  function display_dislike($title){
+
+    ?>
+    <form class="" action="project.php?action=dislike" method="post">
+      <input type="hidden" name="project" value="<?php echo $title;?>"/>
+      <button type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
+    </form>
+    <?php
+  }
+
+  function display_like($title){
+    ?>
+    <form class="" action="project.php?action=like" method="post">
+      <input type="hidden" name="project" value="<?php echo $title;?>"/>
+      <button type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
+    </form>
+    <?php
+  }
+
 ?>
