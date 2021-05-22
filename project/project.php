@@ -53,6 +53,10 @@
         display_delete_success();
         break;
 
+        case "like":
+          $project = $_POST["project"];
+          likeProject($project, $_SESSION["user"]);
+          header("Location: project.php?project=$project");
         default:
         project_form($errors, "");
         break;

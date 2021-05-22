@@ -111,6 +111,10 @@
       <body>
         <div class="form" style="padding:25px">
         <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
+        <form class="" action="project.php?action=like" method="post">
+          <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
+          <button type="submit" name="button">Upvote 0<?php //show_upvotes($project) ?></button>
+        </form>
         </div>
         </form>
         <div class="form">

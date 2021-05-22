@@ -28,17 +28,17 @@
       $query = "SELECT * FROM users WHERE pseudo = '$user_pseudo'";
       $res = mysqli_query($connection, $query);
       if(!$res){
-        $error = mysqli_error($connection);
+        $user_info = other_user_info($res);
         // TODO: display_error_page();
-        echo "error";
+        echo $error;
         exit;
       }else{
-        $user_info = other_user_info($res);
         return $user_info;
       }
     }else{
       // TODO: display_error_page();
-      echo "error";
+      $error = mysqli_error($connection);
+      echo $error;
       exit;
     }
   }
@@ -157,5 +157,22 @@
       exit;
     }
     mysqli_close($connection);
+  }
+
+
+  function likeProject($project_name, $user_pseudo){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $query = "INSERT INTO userProjectLikes VALUES ('$user_pseudo', '$project_name');";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        echo $error;
+        exit;
+      }
+    }else{
+      display_error_page("Connection failed", "profile.php");
+    }
   }
 ?>
