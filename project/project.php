@@ -12,6 +12,8 @@
   if (isset($_SESSION["user"])){
     if (isset($_GET["project"])){
       // TODO: redirect to profile if pseudo = user session
+      $colabs = get_project_collaborators($_GET["project"]);
+      if (in_array($_SESSION["user"], $colabs)){ header("Location: ../profile/profile.php");}
       $project_title = $_GET["project"];
       $project_info = get_other_project_post($project_title);
       if (!empty($project_info)){

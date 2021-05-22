@@ -8,7 +8,7 @@
 
     if(isset($_SESSION["user"])){
       if (isset($_GET["pseudo"])){
-        // TODO: redirect to profile if pseudo = user session
+        if ($_GET["pseudo"]==$_SESSION["user"]){ header("Location: profile.php");}
         $user_pseudo = $_GET["pseudo"];
         $user_info = get_other_user_profile($user_pseudo);
         if (!empty($user_info)){
