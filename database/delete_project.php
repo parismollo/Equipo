@@ -49,4 +49,20 @@
     }
   }
 
+  function delete_project_likes($project){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (!$connection){
+      display_error_page("Connection failed", "profile.php");
+      exit;
+    }else{
+      $query = "DELETE FROM userProjectLikes WHERE project='$project';";
+      $result = mysqli_query($connection, $query);
+      if(!$result){
+        display_error_page(mysqli_error($connection), "profile.php");
+        exit;
+      }
+    }
+  }
+
 ?>

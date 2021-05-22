@@ -10,7 +10,6 @@
       case 'login':
         if (empty($_POST)){
           header('Location: login.php');
-          echo "here";
         }else {
           $errors = get_errors_login($_POST, $errors);
           $is_valid = is_valid_login($_POST);
@@ -30,7 +29,7 @@
     }
   }else{
     if(isset($_SESSION['user'])){
-      header('Location: ../profile/profile.php');
+      header('Location: ../test/search_bar.php');
     }else{
       login_form($errors, "");
     }

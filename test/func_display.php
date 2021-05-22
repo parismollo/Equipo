@@ -13,6 +13,7 @@
     <div>
         <a href="search_bar.php">Home page</a>
         <a href="../profile/profile.php">My profile</a>
+        <a href="../login/login.php?action=reset">Reset session</a>
     </div>
     <form action="search_bar.php?action=valid" method="post">
         <input type="text" name="project" required/> 

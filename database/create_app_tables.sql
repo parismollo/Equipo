@@ -75,4 +75,5 @@ CREATE TABLE userProjectLikes(
   PRIMARY KEY (user, project),
   FOREIGN KEY (user) REFERENCES users(pseudo),
   FOREIGN KEY (project) REFERENCES projects(title)
+  ON DELETE CASCADE
 );

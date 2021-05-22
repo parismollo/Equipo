@@ -2,6 +2,7 @@
   require_once("../database/tag.php");
   require_once("../database/project.php");
   require_once("../login/func_display.php");
+
   function project_form(&$errors, $wrong){
     ?>
     <style>
@@ -112,6 +113,7 @@
         <div class="form" style="padding:25px">
         <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
         <?php if (user_liked($project_info["title"])) display_dislike($project_info["title"]); else display_like($project_info["title"]) ?>
+        <?php if($_SESSION["user"] == "admin_yacine" || $_SESSION['user'] == "admin_paris") admin_action($project_info);?>
         </div>
         <div class="form">
           <div>
@@ -269,4 +271,12 @@
     <?php
   }
 
+  function admin_action($project_info){
+?>
+<form action="project.php?action=delete" method="POST">
+    <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
+    <button style="padding:0px;"type="submit">Delete project</button>
+</form>    
+<?php 
+  }
 ?>
