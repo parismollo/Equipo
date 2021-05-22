@@ -6,6 +6,39 @@
   $password = "";
   $database = "equipo";
 
+  function get_other_project_post($project_title){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $project_title = mysqli_real_escape_string($connection, $project_title);
+      $query = "SELECT * FROM projects WHERE title = '$project_title'";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        // TODO: display_error_page();
+        echo "error";
+        exit;
+      }else{
+        $project_info = other_user_info($res);
+        return $project_info;
+      }
+    }else{
+      // TODO: display_error_page();
+      echo "error";
+      exit;
+    }
+  }
+
+  function other_project_info($res){
+    $project_info = array();
+    while ($row = mysqli_fetch_assoc($res)){
+        foreach($row as $key => $value){
+            $project_info[$key] = $value;
+        }
+    }
+    return $project_info;
+  }
+
   function create_project_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
       if ($key != "labels"){
