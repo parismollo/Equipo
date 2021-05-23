@@ -111,7 +111,8 @@
       <body>
         <div class="form" style="padding:25px">
         <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
-        <?php if (user_liked($project_info["title"])) display_dislike($project_info["title"]); else display_like($project_info["title"]) ?>
+        <?php if (user_liked($project_info["title"])) display_dislike($project_info["title"]); else display_like($project_info["title"]);?>
+        <?php display_sender_request($project_info);?>
         </div>
         <div class="form">
           <div>
@@ -161,6 +162,14 @@
         </div>
         </form>
         <div class="form">
+          <?php // TODO: Get first request in the list and display ?>
+          <?php // TODO: Add user link when clicking in profile ?>
+          <?php
+          $info = get_request($project_info["title"]);
+          if (!empty($info)){
+            display_request($info);
+          }
+          ?>
           <div>
               <?php if(!empty($project_info)) basic_project_profile($project_info);?>
           </div>
@@ -267,6 +276,35 @@
       <button type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
     </form>
     <?php
+  }
+
+  function display_request($info){
+    ?>
+      <p style="text-align:center; padding:0px; margin:0px;"><?php echo $info["user"]?> want's to collaborate!</p>
+      <form class="" style="margin:0em;"action="project.php?action=reply_request" method="post">
+        <input type="hidden" name="project" value="<?php echo $info["project"];?>"/>
+        <input type="hidden" name="user" value="<?php echo $info["user"];?>">
+        <?php // TODO: Send true or false ?>
+        <button style="padding:0px;" type="submit" name="button" value="true">Accept</button>
+        <button style="padding: 0px;"type="submit" name="button" value="false">Decline</button>
+      </form>
+    <?php
+  }
+
+  function display_sender_request($project_info){
+    if(empty(get_request_for_sender($project_info["title"]))){
+      ?>
+      <form class="" action="project.php?action=request" method="post">
+        <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
+        <button type="submit" name="button">Send collaboration request</button>
+      </form>
+      <?php
+    }else{
+      ?>
+        <a class="message" href="">Pending Request</a>
+      <?php
+    }
+
   }
 
 ?>

@@ -255,5 +255,96 @@
     }
   }
 
+  function sendColabRequest($title){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $user_pseudo = $_SESSION['user'];
+      $query = "INSERT INTO userProjectRequest VALUES ('$user_pseudo', '$title')";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        echo $error;
+      }else{
+        echo "Success!";
+      }
+    }else{
+      display_error_page("Something went wrong...", "profile.php");
+    }
+  }
+
+
+  function get_request($project_title){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $query = "SELECT * FROM userProjectRequest WHERE project = '$project_title' LIMIT 1;";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        echo $error;
+      }else{
+        $request_info = array();
+        while ($row = mysqli_fetch_assoc($res)){
+          foreach($row as $key => $value){
+            $request_info[$key] = $value;
+          }
+        }
+        return $request_info;
+      }
+    }else {
+      echo "error";
+      exit;
+    }
+  }
+
+  function run_query($query){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $res = mysqli_query($connection, $query);
+      if (!$res){
+        // TODO: handle error
+        echo "error";
+      }
+    }else{
+      echo "error";
+    }
+  }
+
+
+  function reply_request($user_pseudo, $project, $reply){
+    if($reply){
+      save_user_to_project($user_pseudo, $project);
+    }
+    $query = "DELETE FROM userProjectRequest WHERE user='$user_pseudo' AND project='$project';";
+    run_query($query);
+  }
+
+
+  function get_request_for_sender($project_title){
+    global $server, $user, $password, $database;
+    $connection = connect_to_db($server, $user, $password, $database);
+    if (isset($connection)){
+      $user_pseudo = $_SESSION["user"];
+      $query = "SELECT * FROM userProjectRequest WHERE project = '$project_title' AND user = '$user_pseudo';";
+      $res = mysqli_query($connection, $query);
+      if(!$res){
+        $error = mysqli_error($connection);
+        echo $error;
+      }else{
+        $request_info = array();
+        while ($row = mysqli_fetch_assoc($res)){
+          foreach($row as $key => $value){
+            $request_info[$key] = $value;
+          }
+        }
+        return $request_info;
+      }
+    }else {
+      echo "error";
+      exit;
+    }
+  }
 
 ?>
