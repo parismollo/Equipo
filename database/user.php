@@ -29,6 +29,7 @@
       $res = mysqli_query($connection, $query);
       if(!$res){
         // TODO: display_error_page();
+        $error = mysqli_error($connection);
         echo $error;
         exit;
       }else{
@@ -37,8 +38,7 @@
       }
     }else{
       // TODO: display_error_page();
-      $error = mysqli_error($connection);
-      echo $error;
+      echo "error";
       exit;
     }
   }
