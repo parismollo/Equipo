@@ -28,13 +28,17 @@
                   if (empty($_POST)){
                       header('Location: profile.php');
                   }else{
-                      $tab = array();
-                      $errors = get_errors($_POST, $errors);
-                      $is_valid = is_valid($_POST);
-                      if ($is_valid){
-                          update_user($_POST);
+                      if(isset($_POST["labels"])){
+                        update_tags_user($_POST);
                       }else {
-                          display_profile($tab, $errors, "");
+                        $tab = array();
+                        $errors = get_errors($_POST, $errors);
+                        $is_valid = is_valid($_POST);
+                        if ($is_valid){
+                            update_user($_POST);
+                        }else {
+                            display_profile($tab, $errors, "");
+                        }
                       }
                   }
                   break;

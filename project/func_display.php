@@ -81,6 +81,7 @@
       echo "<option value=\"$value\">$value</option>";
     }
   }
+  
   function display_other_project($project_info){
     ?>
     <!DOCTYPE html>

@@ -144,7 +144,7 @@
         while ($row = mysqli_fetch_assoc($result)){
           if(password_verify($user_input["password"], $row["password"])){
             set_user_session($user_input["pseudo"]);
-            header('Location: ../test/search_bar.php');
+            header('Location: ../home/search_bar.php');
           }else {
             $wrong = "Wrong password!";
             login_form($errors, $wrong);
