@@ -4,27 +4,32 @@
   error_reporting(E_ALL);
   require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user.php");
   $errors = array();
-  if(isset($_GET["action"])){
-    switch ($_GET["action"]) {
-      case 'signup':
-        if (empty($_POST)){
-          header('Location: signup.php');
-        }else{
-          $errors = get_errors($_POST, $errors);
-          $is_valid = is_valid($_POST);
-          if ($is_valid){
-            form_validation($_POST);
-            save_user($_POST);
-          }else{
+
+  if(isset($_SESSION["user"])){
+    header('Location: ../home/search.bar');
+  }else{
+      if(isset($_GET["action"])){
+        switch ($_GET["action"]) {
+          case 'signup':
+            if (empty($_POST)){
+              header('Location: signup.php');
+            }else{
+              $errors = get_errors($_POST, $errors);
+              $is_valid = is_valid($_POST);
+              if ($is_valid){
+                form_validation($_POST);
+                save_user($_POST);
+              }else{
+                signup_form($errors, "");
+              }
+            }
+            break;
+          default:
             signup_form($errors, "");
-          }
+            break;
         }
-        break;
-      default:
+      }else {
         signup_form($errors, "");
-        break;
-    }
-  }else {
-    signup_form($errors, "");
-  }
+      }
+  }    
 ?>

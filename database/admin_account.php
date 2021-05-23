@@ -15,12 +15,11 @@
             $query = create_admin_query($pseudo, $email, $hash_pass);
             $res = mysqli_query($connection, $query);
             if(!$res){
-                $error = mysqli_error($connection);
-                display_error_page($error, "main.php");
+                header('Location: ../signup/signup.php');
                 exit;
             }
         }else{
-            display_error_page("Connection failed", "main.php");
+            header('Location: ../signup/signup.php');
             exit;
         }
         mysqli_close($connection);
