@@ -176,6 +176,10 @@
     $tags = get_user_tags($user_pseudo);
     $res = "";
     $c = 0;
+    if(empty($tags)){
+      echo "<h4>No interests so far...</h4>";
+      return;
+    }
     foreach ($tags as $key => $value) {
       if ($key == 0){
         $res = $res." ".$value;

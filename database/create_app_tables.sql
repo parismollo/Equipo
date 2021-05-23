@@ -1,4 +1,5 @@
 -- Start the MySQL server and run this file to create user table.
+DROP TABLE IF EXISTS userProjectRequest;
 DROP TABLE IF EXISTS userProjectLikes;
 DROP TABLE IF EXISTS projectLabels;
 DROP TABLE IF EXISTS userLabels;
@@ -70,6 +71,15 @@ CREATE TABLE userProject(
 );
 
 CREATE TABLE userProjectLikes(
+  user VARCHAR(256) NOT NULL,
+  project VARCHAR(50) NOT NULL,
+  PRIMARY KEY (user, project),
+  FOREIGN KEY (user) REFERENCES users(pseudo),
+  FOREIGN KEY (project) REFERENCES projects(title)
+);
+
+
+CREATE TABLE userProjectRequest(
   user VARCHAR(256) NOT NULL,
   project VARCHAR(50) NOT NULL,
   PRIMARY KEY (user, project),

@@ -64,6 +64,18 @@
           $project = $_POST["project"];
           dislikeProject($project, $_SESSION["user"]);
           header("Location: project.php?project=$project");
+        case "request":
+          // TODO: DON'T ALLOW USER TO ENTER HERE BY URL IF HE SENT REQUEST ALREADY
+          $project = $_POST["project"];
+          sendColabRequest($project);
+          header("Location: project.php?project=$project");
+        case "reply_request":
+          $user_pseudo = $_POST["user"];
+          $project = $_POST["project"];
+          $reply = $_POST["button"];
+          // TODO: Get user and project
+          reply_request($user_pseudo, $project, $reply);
+          header("Location: project.php?project=$project");
         default:
         project_form($errors, "");
         break;
