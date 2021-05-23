@@ -72,7 +72,7 @@
             <a class="message" href="../home/search_bar.php">Home page</a>
             <a class="message" href="profile.php">My profile</a>
             <a class="message" href="profile.php?action=update">Update profile</a>
-            <a class="message" href="../login/login.php?action=reset">Reset session</a>
+            <a class="message" href="../login/login.php?action=reset">Logout</a>
         </div>
         <div class="form" style="padding:30px;">
           <div>

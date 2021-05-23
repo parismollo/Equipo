@@ -64,9 +64,9 @@
           <h2 style="text-align:center;">No projects so far!</h2>
           <br>
           <br>
-          <a class="empty_result" href="#">Create a project now!</a>
+          <a class="empty_result" href="../project/project.php">Create a project now!</a>
           <h2>Or</h2>
-          <a class="empty_result" style="background: linear-gradient(90deg, rgba(134,242,114,1) 11%, rgba(59,240,18,1) 100%);" href="#">Add your interests</a>
+          <a class="empty_result" style="background: linear-gradient(90deg, rgba(134,242,114,1) 11%, rgba(59,240,18,1) 100%);" href="../profile/profile.php?action=update">Add your interests</a>
         </div>
       <?php
     }
@@ -222,7 +222,7 @@
       <div class="topnav">
         <a href="search_bar.php">Home</a>
         <a href="../profile/profile.php">Profile</a>
-        <a href="#">Logout</a>
+        <a href="../login/login.php?action=reset">Logout</a>
         <div class="search-container">
           <form style="margin-top: 2px;" action="search_bar.php?action=valid" method="post">
             <input type="text" placeholder="  Search..." name="project" required/>

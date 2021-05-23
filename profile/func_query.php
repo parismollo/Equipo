@@ -74,7 +74,7 @@
         if(!$res){
           $error = mysqli_error($connection);
           // TODO: DELETE PROJECT
-          echo "debug user_tag 1";
+          // echo "debug user_tag 1";
         }
       }else{
         // TODO: DELETE PROJECT
