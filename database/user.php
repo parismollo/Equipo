@@ -3,8 +3,8 @@
   require_once('connection.php'); require_once("../signup/func_display.php");// Might be redudant if this is already in signup file
   $server = "localhost"; // change according to your settings
   $user = "root";
-  $password = "";
-  $database = "equipo";
+  $password = "voiture93";
+  $database = "Equipo";
 
   function insert_user_query(&$user_input, $connection){
     foreach ($user_input as $key => $value) {
@@ -28,11 +28,11 @@
       $query = "SELECT * FROM users WHERE pseudo = '$user_pseudo'";
       $res = mysqli_query($connection, $query);
       if(!$res){
-        $user_info = other_user_info($res);
         // TODO: display_error_page();
         echo $error;
         exit;
       }else{
+        $user_info = other_user_info($res);
         return $user_info;
       }
     }else{
@@ -144,7 +144,7 @@
         while ($row = mysqli_fetch_assoc($result)){
           if(password_verify($user_input["password"], $row["password"])){
             set_user_session($user_input["pseudo"]);
-            header('Location: ../profile/profile.php');
+            header('Location: ../test/search_bar.php');
           }else {
             $wrong = "Wrong password!";
             login_form($errors, $wrong);

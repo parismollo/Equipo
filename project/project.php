@@ -47,10 +47,11 @@
         }
         break;
         case "delete":
-        delete_userproject($_POST["project"]);
-        delete_projectLabels($_POST["project"]);
-        delete_project($_POST["project"]);
-        display_delete_success();
+          delete_userproject($_POST["project"]);
+          delete_projectLabels($_POST["project"]);
+          delete_project_likes($_POST["project"]);
+          delete_project($_POST["project"]);
+          display_delete_success();
         break;
 
         case "like":
