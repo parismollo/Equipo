@@ -29,7 +29,8 @@
       </head>
       <body>
         <div class="form">
-          <h1 style="margin-top:0px;"><?php echo $user_info["pseudo"];?></h1>
+          <h1 style="margin-top:0px; margin-bottom: 2px;"><?php echo $user_info["pseudo"];?></h1>
+          <a class="message" href="../home/search_bar.php">Home page</a>
         </div>
         <div class="form" style="padding:30px;">
           <div>

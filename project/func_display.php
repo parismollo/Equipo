@@ -110,7 +110,8 @@
       </head>
       <body>
         <div class="form" style="padding:25px">
-        <h1 style="margin-top:0px;"><?php echo $project_info["title"];?></h1>
+        <h1 style="margin-top:0px; margin-bottom: 2px;"><?php echo $project_info["title"];?></h1>
+        <a class="message" style="padding:0px; margin: 2px;"href="../home/search_bar.php">Home page</a>
         <?php if (user_liked($project_info["title"])) display_dislike($project_info["title"]); else display_like($project_info["title"]);?>
         <?php display_sender_request($project_info);?>
         </div>

@@ -28,17 +28,17 @@
       $query = "SELECT * FROM users WHERE pseudo = '$user_pseudo'";
       $res = mysqli_query($connection, $query);
       if(!$res){
-        $user_info = other_user_info($res);
         // TODO: display_error_page();
+        $error = mysqli_error($connection);
         echo $error;
         exit;
       }else{
+        $user_info = other_user_info($res);
         return $user_info;
       }
     }else{
       // TODO: display_error_page();
-      $error = mysqli_error($connection);
-      echo $error;
+      echo "error";
       exit;
     }
   }
