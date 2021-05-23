@@ -41,6 +41,25 @@
         return $query;
     }
 
+    function update_user($user_input){
+      global $server, $user, $password, $database;
+        $connection = connect_to_db($server, $user, $password, $database);
+        if(isset($connection)){
+            $query = update_user_query($user_input, $connection);
+            $res = mysqli_query($connection, $query);
+            if(!$res){
+                display_error_page("Connection failed", "profile.php");
+                exit;
+            }
+            $tab = array();
+            display_profile($tab, $tab, "Password changed successfully");
+        }else{
+            display_error_page("Connection failed", "profile.php");
+            exit;
+        }
+        mysqli_close($connection);
+    }
+
     function create_user_to_tag_query($user_pseudo, $label_value){
       $query = "INSERT INTO userLabels VALUES ('$user_pseudo', '$label_value');";
       return $query;
@@ -84,23 +103,15 @@
     }
 
 
-    function update_user($user_input){
+    function update_tags_user($user_input){
         global $server, $user, $password, $database;
         $connection = connect_to_db($server, $user, $password, $database);
         if(isset($connection)){
-            $query = update_user_query($user_input, $connection);
-            $res = mysqli_query($connection, $query);
-            if(!$res){
-                display_error_page("Connection failed", "profile.php");
-                exit;
-            }
-            if (!empty($user_input["labels"])){
-              foreach ($user_input["labels"] as $key => $value) {
-                save_user_to_tag($_SESSION["user"], $value);
-              }
+            foreach ($user_input["labels"] as $key => $value) {
+              save_user_to_tag($_SESSION["user"], $value);
             }
             $tab = array();
-            display_profile($tab, $tab, "Password has been changed successfully !");
+            display_profile($tab, $tab, "Tags added !");
         }else{
             display_error_page("Connection failed", "profile.php");
             exit;

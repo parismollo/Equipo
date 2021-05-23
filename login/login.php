@@ -29,7 +29,7 @@
     }
   }else{
     if(isset($_SESSION['user'])){
-      header('Location: ../test/search_bar.php');
+      header('Location: ../home/search_bar.php');
     }else{
       login_form($errors, "");
     }

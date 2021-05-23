@@ -88,10 +88,12 @@
     ?>
       <div class="">
             <form class="" action="profile.php?action=valid_update" method="post">
-                    Add here your interests!
                     <select class="" name="labels[]" multiple>
-                      <?php  generate_tags();?>
+                              <?php  generate_tags();?>
                     </select>
+                    <button type="submit">Add interest</button>
+            </form>
+            <form class="" action="profile.php?action=valid_update" method="post">
                     <input type="password" name="password" placeholder="change password"/>
                     <p class="error" style="text-align:center"><?php  if (check_error2($errors, "password")) echo $errors["password"];?></p>
                     <input type="password" name="password2" placeholder="confirm password"/>
