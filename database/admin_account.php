@@ -16,13 +16,13 @@
             $res = mysqli_query($connection, $query);
             if(!$res){
                 $error = mysqli_error($connection);
-                display_error_page($error, "run_page.php");
+                display_error_page($error, "main.php");
                 exit;
             }
         }else{
-            display_error_page("Connection failed", "run_page.php");
+            display_error_page("Connection failed", "main.php");
             exit;
         }
-        mysqli_close($connection);    
+        mysqli_close($connection);
     }
 ?>

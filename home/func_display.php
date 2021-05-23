@@ -26,6 +26,9 @@
                       display_no_results();
                     }
                     $tab = search_project_homepage($tab1);
+                    if (empty($tab)){
+                      display_no_results();
+                    }
                     display_request_project($tab);
                 }
             }
