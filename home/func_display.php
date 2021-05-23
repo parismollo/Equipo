@@ -22,14 +22,13 @@
                     display_no_results();
                 } else{
                     $tab1 = search_tag_user($_SESSION['user']);
-                    if(empty($tab1)){
-                      display_no_results();
-                    }
                     $tab = search_project_homepage($tab1);
                     if (empty($tab)){
                       display_no_results();
+                    }else{
+                      display_request_project($tab);
+
                     }
-                    display_request_project($tab);
                 }
             }
         ?>
