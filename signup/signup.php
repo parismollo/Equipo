@@ -31,5 +31,6 @@
       }else {
         signup_form($errors, "");
       }
-  }    
+  }
 ?>
+<!-- brinks ;) -->

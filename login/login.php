@@ -5,7 +5,7 @@
   session_start();
   require_once("func_display.php"); require_once("func_valid.php"); require_once("../database/user.php");
   $errors = array();
-  
+
   if (isset($_GET["action"])){
     switch ($_GET["action"]) {
       case 'login':
@@ -36,3 +36,4 @@
     }
   }
 ?>
+<!-- MGL -->
