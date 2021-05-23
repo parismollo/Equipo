@@ -81,7 +81,7 @@
       echo "<option value=\"$value\">$value</option>";
     }
   }
-  
+
   function display_other_project($project_info){
     ?>
     <!DOCTYPE html>
@@ -266,18 +266,18 @@
   function display_dislike($title){
 
     ?>
-    <form class="" action="project.php?action=dislike" method="post">
+    <form class="" style="margin:0px; padding:0px" action="project.php?action=dislike" method="post">
       <input type="hidden" name="project" value="<?php echo $title;?>"/>
-      <button type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
+      <button style="padding:0px;" type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
     </form>
     <?php
   }
 
   function display_like($title){
     ?>
-    <form class="" action="project.php?action=like" method="post">
+    <form class="" style="margin:0px; padding:0px" action="project.php?action=like" method="post">
       <input type="hidden" name="project" value="<?php echo $title;?>"/>
-      <button type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
+      <button style="padding:0px;" type="submit" name="button">Upvote(s):<?php echo count_likes($title)?></button>
     </form>
     <?php
   }
@@ -298,9 +298,9 @@
   function display_sender_request($project_info){
     if(empty(get_request_for_sender($project_info["title"]))){
       ?>
-      <form class="" action="project.php?action=request" method="post">
+      <form class="" style="margin:3px;" action="project.php?action=request" method="post">
         <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
-        <button type="submit" name="button">Send collaboration request</button>
+        <button style="padding:0px;"type="submit" name="button">Send collaboration request</button>
       </form>
       <?php
     }else{
@@ -316,7 +316,7 @@
     <form action="project.php?action=delete" method="POST">
         <input type="hidden" name="project" value="<?php echo $project_info["title"];?>"/>
         <button style="padding:0px;"type="submit">Delete project</button>
-    </form>    
-    <?php 
+    </form>
+    <?php
   }
 ?>
