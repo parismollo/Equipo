@@ -1,10 +1,8 @@
 <?php
   require_once('connection.php');
   require_once('../signup/func_display.php');
-  $server = "localhost"; // change according to your settings
-  $user = "root";
-  $password = "";
-  $database = "equipo";
+  require_once('user.php');
+
 
   function get_other_project_post($project_title){
     global $server, $user, $password, $database;
@@ -298,6 +296,15 @@
     }
   }
 
+
+  function reply_request($user_pseudo, $project, $reply){
+    if($reply=="true"){
+      save_user_to_project($user_pseudo, $project);
+    }
+    $query = "DELETE FROM userProjectRequest WHERE user='$user_pseudo' AND project='$project';";
+    run_query($query);
+  }
+
   function run_query($query){
     global $server, $user, $password, $database;
     $connection = connect_to_db($server, $user, $password, $database);
@@ -312,14 +319,6 @@
     }
   }
 
-
-  function reply_request($user_pseudo, $project, $reply){
-    if($reply){
-      save_user_to_project($user_pseudo, $project);
-    }
-    $query = "DELETE FROM userProjectRequest WHERE user='$user_pseudo' AND project='$project';";
-    run_query($query);
-  }
 
 
   function get_request_for_sender($project_title){

@@ -72,7 +72,7 @@
             <a class="message" href="../home/search_bar.php">Home page</a>
             <a class="message" href="profile.php">My profile</a>
             <a class="message" href="profile.php?action=update">Update profile</a>
-            <a class="message" href="../login/login.php?action=reset">Reset session</a>
+            <a class="message" href="../login/login.php?action=reset">Logout</a>
         </div>
         <div class="form" style="padding:30px;">
           <div>
@@ -118,9 +118,9 @@
       <h4><?php echo $user_info["date"];?></h4>
       <p>Gender</p>
       <h4><?php echo $user_info["gender"];?></h4>
-      <h2>Projects</h2>
       <?php if (sizeof(list_all_projects($user_info["pseudo"]))!=0){
         ?>
+        <h2>Projects</h2>
         <form style="margin-bottom: 5px;" action="../project/project.php?" method="get">
           <select class="" name="project" required>
           <option value="" selected>Please select</option>
@@ -128,6 +128,10 @@
           </select>
           <button class="button3" type="submit">view project</button>
         </form>
+        <?php
+      }else{
+        ?>
+          <h2>No projects so far...</h2>
         <?php
       } ?>
 <?php
