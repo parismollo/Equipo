@@ -1,4 +1,4 @@
-<?php 
+<?php
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -14,17 +14,17 @@
                         header('Location: search_bar.php');
                     }else{
                         $project = fusion_tab($_POST['project']);
-                        display_search_bar($project, $_GET["action"]);
+                        display_home($project, $_GET["action"]);
                     }
-                    break;        
+                    break;
                 default:
-                    display_search_bar($errors, "");
+                    display_home($errors, "");
                     break;
             }
         } else{
-            display_search_bar($errors, "");
+            display_home($errors, "");
         }
     }else{
         header('Location: ../signup/signup.php');
-    }    
+    }
 ?>
