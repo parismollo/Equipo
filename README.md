@@ -43,6 +43,7 @@ Sur Equipo vous pouvez
 Pour tester le projet, lancez XAMPP dans le terminal, puis accédez au dossier des fichiers binaires Mysql pour créer la base de données. Par exemple:
 
 Windows
+```
 // Etape 1
 C:\Users\user\XAMPP>xampp-control.exe
 // Etape 2
@@ -51,9 +52,10 @@ C:\Users\user\XAMPP\mysql\bin>mysql -u root -p
 MariaDB [(none)]> use equipo;
 // Etape 4
 MariaDB [equipo]> source C:\Users\user\XAMPP\equipo\create_app_tables.sql
-
+```
 
 Linux
+```
 // Etape 1
 Lancez XAMPP et mettez le répertoire du site dans : /opt/lampp/htdocs/
 // Etape 2
@@ -62,7 +64,7 @@ Lancez XAMPP et mettez le répertoire du site dans : /opt/lampp/htdocs/
 MariaDB [(none)]> use (nom de base de données);
 // Etape 4
 Faites : source /opt/lampp/htdocs/equipo/database/create_app_tables.sql;
-
+```
 
 Dans le fichier user.php changer les variables globales $password et $database selon votre base de données ($password étant le mot de passe de votre base de données et $database son nom).
 
@@ -71,8 +73,12 @@ Ensuite accédez au serveur php localement via votre navigateur favori et accéd
 
 
 Les comptes administrateurs seront créés voici leur identifiant :
+
 -pseudo : admin_yacine -mdp: admin01
+
 -pseudo: admin_paris -mdp: admin02
-Vous êtes maintenant prêt à explorer la plateforme !
-Equipo Team
-Paris Mollo & Yacine Ahmed Yahia
+
+_Vous êtes maintenant prêt à explorer la plateforme !
+Equipo Team_
+
+**Paris Mollo & Yacine Ahmed Yahia**
